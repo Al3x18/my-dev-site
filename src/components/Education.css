@@ -60,9 +60,13 @@
   transition: all 0.3s ease;
 }
 
-.knowledge-card:nth-child(1) { --card-color: var(--electric-blue); }
-.knowledge-card:nth-child(2) { --card-color: var(--lime-green); }
-.knowledge-card:nth-child(3) { --card-color: var(--golden-yellow); }
+.knowledge-card:nth-child(1) { --card-color: #A8B9CC; }  /* C - grigio/blu */
+.knowledge-card:nth-child(2) { --card-color: #f89820; }  /* Java - arancione */
+.knowledge-card:nth-child(3) { --card-color: #3776ab; }  /* Python - blu */
+.knowledge-card:nth-child(4) { --card-color: var(--electric-blue); }  /* Networks */
+.knowledge-card:nth-child(5) { --card-color: var(--lime-green); }  /* Linux */
+.knowledge-card:nth-child(6) { --card-color: var(--golden-yellow); }  /* Databases */
+.knowledge-card:nth-child(7) { --card-color: #f7931a; }  /* Blockchain - Bitcoin orange */
 
 .knowledge-card:hover {
   border-color: var(--card-color);
