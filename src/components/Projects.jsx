@@ -8,7 +8,7 @@ const projectsData = [
     icon: '🏎️',
     status: 'live',
     platform: 'Flutter / Play Store',
-    description: 'Complete Formula 1 companion app with real-time data, schedules, and standings',
+    description: 'Complete Formula 1 companion app with data, schedules, and standings',
     longDescription: 'A comprehensive Formula 1 application developed entirely in Flutter, providing fans with everything they need to follow the sport. Features include complete race calendar, driver and constructor standings, session results, and access to previous seasons data.',
     features: [
       'Complete F1 race calendar with session times',
