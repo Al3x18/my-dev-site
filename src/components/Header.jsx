@@ -20,6 +20,21 @@ function Header() {
     return () => clearInterval(timer)
   }, [])
 
+  const developer = {
+    name: "Alex De Pasquale",
+    role: "Full-Stack & Mobile Developer",
+    location: "Italy 🇮🇹",
+    education: "L-31 Computer Science (In Progress)",
+    skills: {
+      mobile: ["Flutter", "Dart", "Riverpod", "Swift"],
+      frontend: ["React", "JavaScript", "HTML/CSS"],
+      backend: ["Python", "Flask", "REST APIs", "Firebase"],
+      otherLanguages: ["C", "C++", "Java", "SQL"]
+    },
+    knowledge: ["Networks", "Linux", "Databases", "Blockchain"],
+    mainProject: "Race Room 🏎️"
+  }
+
   return (
     <header className="header">
       <div className="header-content">
@@ -50,37 +65,40 @@ function Header() {
             
             <div className="code-content">
               <div className="code-line">
-                <span className="property">name</span>: <span className="string">"Alex De Pasquale"</span>,
+                <span className="property">name</span>: <span className="string">"{developer.name}"</span>,
               </div>
               <div className="code-line">
-                <span className="property">role</span>: <span className="string">"Full-Stack & Mobile Developer"</span>,
+                <span className="property">location</span>: <span className="string">"{developer.location}"</span>,
               </div>
               <div className="code-line">
-                <span className="property">location</span>: <span className="string">"Italy 🇮🇹"</span>,
+                <span className="property">education</span>: <span className="string">"{developer.education}"</span>,
+              </div>
+              <div className="code-line nested-obj">
+                <span className="property">skills</span>: {'{'}
+              </div>
+              <div className="code-line indent-2">
+                <span className="property">mobile</span>: [<span className="string">"{developer.skills.mobile.join('", "')}"</span>],
+              </div>
+              <div className="code-line indent-2">
+                <span className="property">frontend</span>: [<span className="string">"{developer.skills.frontend.join('", "')}"</span>],
+              </div>
+              <div className="code-line indent-2">
+                <span className="property">backend</span>: [<span className="string">"{developer.skills.backend.join('", "')}"</span>],
+              </div>
+              <div className="code-line indent-2">
+                <span className="property">otherLanguages</span>: [<span className="string">"{developer.skills.otherLanguages.join('", "')}"</span>]
+              </div>
+              <div className="code-line nested-close">
+                {'}'},
               </div>
               <div className="code-line">
-                <span className="property">mobile</span>: [<span className="string">"Flutter"</span>, <span className="string">"Dart"</span>, <span className="string">"Riverpod"</span>],
+                <span className="property">knowledge</span>: [<span className="string">"{developer.knowledge.join('", "')}"</span>],
               </div>
               <div className="code-line">
-                <span className="property">backend</span>: [<span className="string">"Python"</span>, <span className="string">"Flask"</span>, <span className="string">"REST APIs"</span>],
-              </div>
-              <div className="code-line">
-                <span className="property">frontend</span>: [<span className="string">"React"</span>, <span className="string">"JavaScript"</span>, <span className="string">"HTML/CSS"</span>],
-              </div>
-              <div className="code-line">
-                <span className="property">languages</span>: [<span className="string">"C"</span>, <span className="string">"C++"</span>, <span className="string">"Java"</span>, <span className="string">"Python"</span>, <span className="string">"SQL"</span>],
-              </div>
-              <div className="code-line">
-                <span className="property">databases</span>: [<span className="string">"PostgreSQL"</span>, <span className="string">"Firebase"</span>, <span className="string">"SQLite"</span>],
-              </div>
-              <div className="code-line">
-                <span className="property">interests</span>: [<span className="string">"Mobile Apps"</span>, <span className="string">"Game Dev"</span>, <span className="string">"Automation"</span>],
-              </div>
-              <div className="code-line">
-                <span className="property">currentProject</span>: <span className="string">"Race Room - F1 App 🏎️"</span>,
+                <span className="property">mainProject</span>: <span className="string">"{developer.mainProject}"</span>,
               </div>
               {/* <div className="code-line">
-                <span className="property">availableForWork</span>: <span className="boolean">true</span>
+                <span className="property">availableForWork</span>: <span className="boolean">{developer.availableForWork.toString()}</span>
               </div> */}
             </div>
             

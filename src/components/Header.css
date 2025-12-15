@@ -1,5 +1,5 @@
 .header {
-  padding: 2rem 1.5rem;
+  padding: 1.5rem;
   background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
   border: 1px solid var(--bg-tertiary);
   border-radius: 10px;
@@ -26,7 +26,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
+  height: 3px;
   background: linear-gradient(90deg, var(--electric-blue), var(--neon-pink), var(--vivid-purple), var(--lime-green));
   background-size: 300% 100%;
   animation: gradientMove 5s ease infinite;
@@ -45,15 +45,15 @@
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.08) 0%, transparent 50%);
+    radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.06) 0%, transparent 50%);
   pointer-events: none;
 }
 
 .header-content {
   display: flex;
   align-items: flex-start;
-  gap: 2rem;
+  gap: 1.5rem;
   position: relative;
   z-index: 1;
 }
@@ -64,8 +64,8 @@
 }
 
 .avatar {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   background: var(--bg-tertiary);
   border-radius: 10px;
   display: flex;
@@ -73,8 +73,8 @@
   justify-content: center;
   overflow: hidden;
   box-shadow: 
-    0 0 25px rgba(0, 212, 255, 0.3),
-    0 0 50px rgba(168, 85, 247, 0.15);
+    0 0 20px rgba(0, 212, 255, 0.25),
+    0 0 40px rgba(168, 85, 247, 0.1);
   animation: pulse 3s ease-in-out infinite;
   border: 2px solid var(--bg-tertiary);
   transition: border-color 0.3s ease;
@@ -87,13 +87,13 @@
 @keyframes pulse {
   0%, 100% {
     box-shadow: 
-      0 0 30px rgba(0, 212, 255, 0.3),
-      0 0 60px rgba(168, 85, 247, 0.15);
+      0 0 20px rgba(0, 212, 255, 0.25),
+      0 0 40px rgba(168, 85, 247, 0.1);
   }
   50% {
     box-shadow: 
-      0 0 40px rgba(0, 212, 255, 0.5),
-      0 0 80px rgba(168, 85, 247, 0.25);
+      0 0 30px rgba(0, 212, 255, 0.4),
+      0 0 60px rgba(168, 85, 247, 0.2);
   }
 }
 
@@ -101,25 +101,19 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-}
-
-.avatar-text {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--bg-primary);
+  border-radius: 8px;
 }
 
 .status-indicator {
   position: absolute;
-  bottom: 5px;
-  right: 5px;
-  width: 20px;
-  height: 20px;
+  bottom: 3px;
+  right: 3px;
+  width: 16px;
+  height: 16px;
   background: var(--lime-green);
   border-radius: 50%;
-  border: 3px solid var(--bg-secondary);
-  box-shadow: 0 0 10px var(--lime-green);
+  border: 2px solid var(--bg-secondary);
+  box-shadow: 0 0 8px var(--lime-green);
   animation: statusPulse 2s ease-in-out infinite;
 }
 
@@ -130,33 +124,33 @@
 
 .header-info {
   flex: 1;
+  min-width: 0;
 }
 
 .name-line {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  gap: 0.4rem;
+  margin-bottom: 0.25rem;
 }
 
 .prompt-symbol {
   color: var(--golden-yellow);
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .name {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
   background: linear-gradient(90deg, var(--electric-blue), var(--neon-pink));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: none;
 }
 
 .role-line {
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
 }
 
 .comment {
@@ -165,7 +159,7 @@
 
 .role {
   color: var(--lime-green);
-  text-shadow: 0 0 10px rgba(0, 255, 102, 0.4);
+  text-shadow: 0 0 8px rgba(0, 255, 102, 0.3);
 }
 
 .cursor-inline {
@@ -174,11 +168,17 @@
   margin-left: 2px;
 }
 
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Bio / Code Block */
 .bio {
-  font-size: 0.8rem;
-  line-height: 1.7;
+  font-size: 0.72rem;
+  line-height: 1.6;
   background: var(--bg-tertiary);
-  padding: 1rem 1.25rem;
+  padding: 0.75rem 1rem;
   border-radius: 8px;
   border-left: 3px solid var(--vivid-purple);
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
@@ -189,11 +189,23 @@
 }
 
 .code-content {
-  padding-left: 1.5rem;
+  padding-left: 1rem;
 }
 
 .code-line {
-  padding: 0.15rem 0;
+  padding: 0.1rem 0;
+}
+
+.code-line.nested-obj {
+  margin-top: 0.1rem;
+}
+
+.code-line.nested-close {
+  margin-bottom: 0.1rem;
+}
+
+.code-line.indent-2 {
+  padding-left: 1rem;
 }
 
 .keyword {
@@ -218,10 +230,11 @@
   font-weight: 600;
 }
 
+/* Social Links */
 .social-links {
   display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
   flex-wrap: wrap;
   position: relative;
   z-index: 1;
@@ -230,18 +243,18 @@
 .social-link {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.5rem 1rem;
+  gap: 0.35rem;
+  padding: 0.4rem 0.85rem;
   background: var(--bg-tertiary);
   border: 1px solid transparent;
   border-radius: 6px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 500;
   transition: all 0.3s ease;
 }
 
 .social-link:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 .social-link::after {
@@ -250,37 +263,38 @@
 
 .social-link.github:hover {
   border-color: var(--text-primary);
-  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
   color: var(--text-primary);
 }
 
 .social-link.linkedin:hover {
   border-color: #0077b5;
-  box-shadow: 0 5px 20px rgba(0, 119, 181, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3);
   color: #0077b5;
 }
 
 .social-link.playstore:hover {
   border-color: var(--lime-green);
-  box-shadow: 0 5px 20px rgba(0, 255, 102, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 255, 102, 0.2);
   color: var(--lime-green);
 }
 
 .social-icon {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
 }
 
+/* Terminal Info */
 .terminal-info {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
   border-top: 1px dashed var(--bg-tertiary);
   position: relative;
   z-index: 1;
 }
 
 .terminal-info code {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .terminal-info .prompt {
@@ -295,19 +309,21 @@
   color: var(--text-primary);
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .header {
-    padding: 2rem 1.5rem;
+    padding: 1.25rem;
   }
   
   .header-content {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 1rem;
   }
   
   .name {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
   }
   
   .name-line {
@@ -316,10 +332,15 @@
   
   .bio {
     text-align: left;
+    font-size: 0.68rem;
   }
   
   .code-content {
-    padding-left: 1rem;
+    padding-left: 0.75rem;
+  }
+  
+  .code-line.indent-2 {
+    padding-left: 0.75rem;
   }
   
   .social-links {
@@ -328,5 +349,20 @@
   
   .terminal-info {
     text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .bio {
+    font-size: 0.62rem;
+    padding: 0.6rem 0.75rem;
+  }
+  
+  .code-content {
+    padding-left: 0.5rem;
+  }
+  
+  .code-line.indent-2 {
+    padding-left: 0.5rem;
   }
 }

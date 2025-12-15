@@ -156,6 +156,23 @@ const skillsData = [
       'API endpoint architecture',
       'Third-party API integration'
     ]
+  },
+  {
+    id: 'swift',
+    name: 'Swift',
+    icon: '🍎',
+    level: 'Basic',
+    color: '#FA7343',
+    accentColor: '#FF9F0A',
+    description: 'iOS Development basics',
+    details: [
+      'Language syntax and structure',
+      'Variables, constants and data types',
+      'Optionals and unwrapping',
+      'Control flow and loops',
+      'Functions and closures',
+      'Basic OOP concepts in Swift'
+    ]
   }
 ]
 

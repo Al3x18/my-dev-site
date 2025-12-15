@@ -1,6 +1,18 @@
+import { useState } from 'react'
 import './Contact.css'
 
 function Contact() {
+  const [copied, setCopied] = useState(false)
+  const email = 'alexdepasquale1997@gmail.com'
+
+  const copyEmail = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    navigator.clipboard.writeText(email)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
   return (
     <section className="section contact-section">
       <h2 className="section-title">./connect.sh</h2>
@@ -19,6 +31,40 @@ function Contact() {
         </div>
         
         <div className="contact-cards">
+          <a 
+            href={`mailto:${email}`}
+            className="contact-card email"
+          >
+            <div className="card-icon">
+              <svg viewBox="0 0 24 24" className="icon-svg">
+                <path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+            </div>
+            <div className="card-content">
+              <h3 className="card-title">Personal Mail</h3>
+              <p className="card-value">Send me a message</p>
+              <span className="card-hint email-hint">
+                {email}
+                <button 
+                  className={`copy-btn ${copied ? 'copied' : ''}`}
+                  onClick={copyEmail}
+                  title="Copy email"
+                >
+                  {copied ? (
+                    <svg viewBox="0 0 24 24" width="14" height="14">
+                      <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" width="14" height="14">
+                      <path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                    </svg>
+                  )}
+                </button>
+              </span>
+            </div>
+            <span className="card-arrow">→</span>
+          </a>
+          
           <a 
             href="https://github.com/Al3x18" 
             target="_blank" 
@@ -93,4 +139,3 @@ function Contact() {
 }
 
 export default Contact
-

@@ -83,6 +83,10 @@
   transform: translateY(-5px);
 }
 
+.contact-card.email {
+  border-left: 3px solid var(--hot-orange);
+}
+
 .contact-card.github {
   border-left: 3px solid var(--text-primary);
 }
@@ -93,6 +97,11 @@
 
 .contact-card.playstore {
   border-left: 3px solid var(--lime-green);
+}
+
+.contact-card.email:hover {
+  border-color: var(--hot-orange);
+  box-shadow: 0 10px 40px rgba(255, 107, 53, 0.25);
 }
 
 .contact-card.github:hover {
@@ -123,6 +132,11 @@
 
 .contact-card:hover .card-icon {
   transform: scale(1.1);
+}
+
+.contact-card.email:hover .card-icon {
+  background: var(--hot-orange);
+  color: var(--bg-primary);
 }
 
 .contact-card.github:hover .card-icon {
@@ -163,6 +177,44 @@
   margin-bottom: 0.15rem;
 }
 
+.contact-card.email .card-hint {
+  word-break: break-all;
+}
+
+.email-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--bg-tertiary);
+  border-radius: 4px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.copy-btn:hover {
+  background: var(--hot-orange);
+  border-color: var(--hot-orange);
+  color: var(--bg-primary);
+}
+
+.copy-btn.copied {
+  background: var(--lime-green);
+  border-color: var(--lime-green);
+  color: var(--bg-primary);
+}
+
 .card-hint {
   font-size: 0.7rem;
   color: var(--text-muted);
@@ -176,6 +228,10 @@
 
 .contact-card:hover .card-arrow {
   transform: translateX(5px);
+}
+
+.contact-card.email:hover .card-arrow {
+  color: var(--hot-orange);
 }
 
 .contact-card.github:hover .card-arrow {
