@@ -1,16 +1,55 @@
-# React + Vite
+# Alex De Pasquale - Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🌐 **Live**: [alexdepasquale.dev](https://alexdepasquale.dev)
 
-Currently, two official plugins are available:
+A modern, terminal-themed personal portfolio website built with React and Vite.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+- **Terminal-style UI** with animated boot sequence
+- **Responsive design** optimized for mobile and desktop
+- **Dark theme** with vibrant accent colors
+- **Expandable sections** for skills and projects
+- **Smooth animations** and micro-interactions
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- **React 18** - UI Library
+- **Vite** - Build tool
+- **React Router** - Client-side routing
+- **CSS3** - Custom styling with CSS variables
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📁 Project Structure
+
+```
+src/
+├── assets/          # Images and static files
+├── components/      # Reusable UI components
+│   ├── Header.jsx
+│   ├── Skills.jsx
+│   ├── Projects.jsx
+│   ├── Education.jsx
+│   ├── Contact.jsx
+│   └── LoadingScreen.jsx
+├── pages/           # Route pages
+│   └── RaceRoomPolicy.jsx
+├── App.jsx          # Main app component
+├── App.css          # Global styles
+└── main.jsx         # Entry point with routing
+```
+
+## 🌐 Deployment
+
+This site is deployed on **Vercel** with automatic deployments on push to `main`.
+
+## 👤 Author
+
+**Alex De Pasquale**
+
+- GitHub: [@Al3x18](https://github.com/Al3x18)
+- LinkedIn: [Alex De Pasquale](https://www.linkedin.com/in/alex-de-pasquale-28535860/)
+- Play Store: [Race Room](https://play.google.com/store/apps/details?id=com.adp.raceRoom)
+
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).
