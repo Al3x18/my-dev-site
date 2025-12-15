@@ -1,0 +1,248 @@
+.contact-section {
+  animation: slideUp 0.6s ease-out;
+  animation-delay: 0.8s;
+  animation-fill-mode: both;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-terminal {
+  background: var(--bg-primary);
+  border: 1px solid var(--bg-tertiary);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.terminal-line {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.terminal-line .prompt {
+  color: var(--lime-green);
+}
+
+.terminal-line .path {
+  color: var(--sky-blue);
+}
+
+.terminal-line .cmd {
+  color: var(--text-primary);
+}
+
+.contact-output {
+  padding-left: 1rem;
+  border-left: 2px solid var(--electric-blue);
+}
+
+.contact-intro {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-tertiary);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.02) 100%);
+  pointer-events: none;
+}
+
+.contact-card::after {
+  display: none;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-card.github {
+  border-left: 3px solid var(--text-primary);
+}
+
+.contact-card.linkedin {
+  border-left: 3px solid #0077b5;
+}
+
+.contact-card.playstore {
+  border-left: 3px solid var(--lime-green);
+}
+
+.contact-card.github:hover {
+  border-color: var(--text-primary);
+  box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
+}
+
+.contact-card.linkedin:hover {
+  border-color: #0077b5;
+  box-shadow: 0 10px 40px rgba(0, 119, 181, 0.25);
+}
+
+.contact-card.playstore:hover {
+  border-color: var(--lime-green);
+  box-shadow: 0 10px 40px rgba(0, 255, 102, 0.2);
+}
+
+.card-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-tertiary);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover .card-icon {
+  transform: scale(1.1);
+}
+
+.contact-card.github:hover .card-icon {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.contact-card.linkedin:hover .card-icon {
+  background: #0077b5;
+  color: white;
+}
+
+.contact-card.playstore:hover .card-icon {
+  background: var(--lime-green);
+  color: var(--bg-primary);
+}
+
+.icon-svg {
+  width: 24px;
+  height: 24px;
+}
+
+.card-content {
+  flex: 1;
+}
+
+.card-title {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.15rem;
+  font-weight: 500;
+}
+
+.card-value {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.card-hint {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.card-arrow {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover .card-arrow {
+  transform: translateX(5px);
+}
+
+.contact-card.github:hover .card-arrow {
+  color: var(--text-primary);
+}
+
+.contact-card.linkedin:hover .card-arrow {
+  color: #0077b5;
+}
+
+.contact-card.playstore:hover .card-arrow {
+  color: var(--lime-green);
+}
+
+.status-bar {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  background: var(--bg-card);
+  border: 1px dashed var(--bg-tertiary);
+  border-radius: 8px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+.status-dot.online {
+  background: var(--lime-green);
+  box-shadow: 0 0 12px var(--lime-green);
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+.status-icon {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .contact-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .status-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}
