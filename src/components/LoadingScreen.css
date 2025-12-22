@@ -132,7 +132,7 @@
   height: 6px;
   background: var(--bg-tertiary);
   border-radius: 10px;
-  overflow: visible;
+  overflow: hidden;
   position: relative;
 }
 
@@ -148,12 +148,12 @@
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 20px;
-  height: 20px;
+  width: 12px;
+  height: 12px;
   background: var(--electric-blue);
   border-radius: 50%;
-  filter: blur(10px);
-  opacity: 0.8;
+  filter: blur(6px);
+  opacity: 0.4;
   transition: left 0.3s ease-out;
 }
 
