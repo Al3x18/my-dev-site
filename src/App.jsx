@@ -4,8 +4,10 @@ import LoadingScreen from './components/LoadingScreen'
 import Header from './components/Header'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
+import WorkingOn from './components/WorkingOn'
 import Education from './components/Education'
 import Contact from './components/Contact'
+import Footer from './components/Footer'
 
 function App() {
   const [loaded, setLoaded] = useState(false)
@@ -74,13 +76,10 @@ function App() {
           <Header />
           <Skills />
           <Projects />
+          <WorkingOn />
           <Education />
           <Contact />
-          <footer className="footer">
-            <span className="prompt">alex@portfolio:~$</span>
-            <span className="blink">_</span>
-            <p className="copyright">© {new Date().getFullYear()} Alex De Pasquale | Built with React + Vite</p>
-          </footer>
+          <Footer />
         </main>
       )}
     </div>
