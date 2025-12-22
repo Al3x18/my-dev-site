@@ -103,7 +103,7 @@ function Projects() {
       'live': { label: 'LIVE', class: 'status-live' },
       'open-source': { label: 'OPEN SOURCE', class: 'status-opensource' },
       'active': { label: 'ACTIVE', class: 'status-active' },
-      'university': { label: 'UNIVERSITY', class: 'status-university' }
+      'university': { label: 'UNIVERSITY PROJECT', class: 'status-university' }
     }
     return statusMap[status] || { label: status, class: '' }
   }
@@ -121,8 +121,6 @@ function Projects() {
               className={`project-card ${expandedProject === project.id ? 'expanded' : ''} ${project.highlight ? 'featured' : ''}`}
               style={{ animationDelay: `${index * 0.15}s` }}
             >
-              {project.highlight && <div className="featured-badge">★ FEATURED PROJECT</div>}
-              
               <div 
                 className="project-header"
                 onClick={() => toggleProject(project.id)}
@@ -132,6 +130,7 @@ function Projects() {
                   <div className="project-title-row">
                     <h3 className="project-name">{project.name}</h3>
                     <span className={`status-badge ${status.class}`}>{status.label}</span>
+                    {project.highlight && <span className="featured-badge">FEATURED PROJECT</span>}
                   </div>
                   <span className="project-platform">{project.platform}</span>
                 </div>

@@ -49,15 +49,13 @@
 }
 
 .featured-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
+  display: inline-block;
   background: linear-gradient(135deg, var(--golden-yellow), var(--hot-orange));
   color: var(--bg-primary);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 700;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
   letter-spacing: 0.5px;
 }
 
@@ -314,11 +312,6 @@
     font-size: 1.1rem;
   }
   
-  .featured-badge {
-    position: static;
-    display: inline-block;
-    margin-bottom: 0.5rem;
-  }
   
   .features-list {
     grid-template-columns: 1fr;
