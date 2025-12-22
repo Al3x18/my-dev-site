@@ -26,10 +26,13 @@ function Header() {
     location: "Italy 🇮🇹",
     education: "L-31 Computer Science (In Progress)",
     skills: {
-      mobile: ["Flutter", "Dart", "Riverpod", "Swift"],
-      frontend: ["React", "JavaScript", "HTML/CSS"],
-      backend: ["Python", "Flask", "REST APIs", "Firebase"],
-      otherLanguages: ["C", "C++", "Java", "SQL"]
+      flutter: ["Flutter", "Dart", "Riverpod", "GetX"],
+      python: ["Python", "Flask", "Playwright", "Selenium"],
+      javascript: ["JavaScript", "React"],
+      c: ["C", "C++"],
+      java: ["Java"],
+      database: ["SQL", "PostgreSQL"],
+      other: ["Swift", "Firebase"]
     },
     knowledge: ["Networks", "Linux", "Databases", "Blockchain"],
     mainProject: "Race Room 🏎️"
@@ -77,16 +80,25 @@ function Header() {
                 <span className="property">skills</span>: {'{'}
               </div>
               <div className="code-line indent-2">
-                <span className="property">mobile</span>: [<span className="string">"{developer.skills.mobile.join('", "')}"</span>],
+                <span className="property">Flutter/Dart</span>: [<span className="string">"{developer.skills.flutter.join('", "')}"</span>],
               </div>
               <div className="code-line indent-2">
-                <span className="property">frontend</span>: [<span className="string">"{developer.skills.frontend.join('", "')}"</span>],
+                <span className="property">Python</span>: [<span className="string">"{developer.skills.python.join('", "')}"</span>],
               </div>
               <div className="code-line indent-2">
-                <span className="property">backend</span>: [<span className="string">"{developer.skills.backend.join('", "')}"</span>],
+                <span className="property">JavaScript</span>: [<span className="string">"{developer.skills.javascript.join('", "')}"</span>],
               </div>
               <div className="code-line indent-2">
-                <span className="property">otherLanguages</span>: [<span className="string">"{developer.skills.otherLanguages.join('", "')}"</span>]
+                <span className="property">C/C++</span>: [<span className="string">"{developer.skills.c.join('", "')}"</span>],
+              </div>
+              <div className="code-line indent-2">
+                <span className="property">Java</span>: [<span className="string">"{developer.skills.java.join('", "')}"</span>],
+              </div>
+              <div className="code-line indent-2">
+                <span className="property">Database</span>: [<span className="string">"{developer.skills.database.join('", "')}"</span>],
+              </div>
+              <div className="code-line indent-2">
+                <span className="property">Other</span>: [<span className="string">"{developer.skills.other.join('", "')}"</span>]
               </div>
               <div className="code-line nested-close">
                 {'}'},
