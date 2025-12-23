@@ -9,23 +9,23 @@ import Education from './components/Education'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
+const loadingTasks = [
+  { text: 'Booting up creativity...', duration: 400 },
+  { text: 'Loading universe...', duration: 350 },
+  { text: 'Calculating physics of success...', duration: 400 },
+  { text: 'Compiling spaghetti code...', duration: 350 },
+  { text: 'Brewing virtual coffee ☕', duration: 300 },
+  { text: 'Teaching AI to be humble...', duration: 350 },
+  { text: 'Downloading more RAM...', duration: 300 },
+  { text: 'Convincing bugs to become features...', duration: 400 },
+  { text: 'Warming up the pixels...', duration: 300 },
+  { text: 'Almost there, promise!', duration: 350 },
+]
+
 function App() {
   const [loaded, setLoaded] = useState(false)
   const [progress, setProgress] = useState(0)
   const [currentTask, setCurrentTask] = useState('')
-  
-  const loadingTasks = [
-    { text: 'Booting up creativity...', duration: 400 },
-    { text: 'Loading universe...', duration: 350 },
-    { text: 'Calculating physics of success...', duration: 400 },
-    { text: 'Compiling spaghetti code...', duration: 350 },
-    { text: 'Brewing virtual coffee ☕', duration: 300 },
-    { text: 'Teaching AI to be humble...', duration: 350 },
-    { text: 'Downloading more RAM...', duration: 300 },
-    { text: 'Convincing bugs to become features...', duration: 400 },
-    { text: 'Warming up the pixels...', duration: 300 },
-    { text: 'Almost there, promise!', duration: 350 },
-  ]
 
   useEffect(() => {
     let currentIndex = 0
