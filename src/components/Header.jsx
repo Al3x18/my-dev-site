@@ -1,28 +1,35 @@
 import { useState, useEffect } from 'react'
 import './Header.css'
 import logoImg from '../assets/A-dev-logo.png'
+import dayjs from 'dayjs'
+import customParseFormat from 'dayjs/plugin/customParseFormat'
 
 function Header() {
   const [typedText, setTypedText] = useState('')
   const fullText = 'Full-Stack & Mobile Developer'
   
+  // Write fullText letter by letter with a delay of 50ms
+  // in this function the state of typedText changes every 50ms until the fullText length is reached
   useEffect(() => {
-    let index = 0
-    const timer = setInterval(() => {
-      if (index < fullText.length) {
-        setTypedText(fullText.slice(0, index + 1))
-        index++
-      } else {
-        clearInterval(timer)
-      }
-    }, 50)
-    
-    return () => clearInterval(timer)
-  }, [])
+    if (typedText.length === fullText.length) return;
+  
+    const timer = setTimeout(() => {
+      setTypedText(fullText.slice(0, typedText.length + 1));
+    }, 50);
+  
+    return () => clearTimeout(timer);
+  }, [typedText]);
+
+  function calculateMyAge() {
+    dayjs.extend(customParseFormat);
+    const birthDate = dayjs('18-01-1997', 'DD-MM-YYYY');
+    const now = dayjs();
+    return now.diff(birthDate, 'year').toString();
+  }
 
   const developer = {
     name: "Alex De Pasquale",
-    role: "Full-Stack & Mobile Developer",
+    age: calculateMyAge(),
     location: "Italy 🇮🇹",
     education: "L-31 Computer Science (In Progress)",
     skills: {
@@ -69,6 +76,9 @@ function Header() {
             <div className="code-content">
               <div className="code-line">
                 <span className="property">name</span>: <span className="string">"{developer.name}"</span>,
+              </div>
+              <div className="code-line">
+                <span className="property">age</span>: <span className="string">"{developer.age}"</span>,
               </div>
               <div className="code-line">
                 <span className="property">location</span>: <span className="string">"{developer.location}"</span>,
