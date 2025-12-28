@@ -1,5 +1,5 @@
-import { termsEN, termsIT } from '../content/race-room/raceRoomTerms';
-import './RaceRoomTerms.css';
+import { termsEN } from '../content/w-quake/wQuakeTerms';
+import './WQuakeTerms.css';
 
 // Helper function to parse bold text
 const parseText = (text) => {
@@ -9,14 +9,14 @@ const parseText = (text) => {
   );
 };
 
-function RaceRoomTerms({ lang = 'en' }) {
-  const terms = lang === 'it' ? termsIT : termsEN;
+function WQuakeTerms() {
+  const terms = termsEN;
 
   return (
     <div className="terms-page">
       <div className="terms-container">
         <header className="terms-header">
-          <h1 className="terms-title">🏎️ {terms.title}</h1>
+          <h1 className="terms-title">🌍 {terms.title}</h1>
         </header>
 
         <div className="terms-intro">
@@ -35,7 +35,7 @@ function RaceRoomTerms({ lang = 'en' }) {
 
         <footer className="terms-footer">
           <p className="last-updated">
-            {lang === 'it' ? 'Ultimo aggiornamento' : 'Last Updated'}: {terms.lastUpdated}
+            Last Updated: {terms.lastUpdated}
           </p>
         </footer>
       </div>
@@ -43,13 +43,5 @@ function RaceRoomTerms({ lang = 'en' }) {
   );
 }
 
-export function RaceRoomTermsEN() {
-  return <RaceRoomTerms lang="en" />;
-}
-
-export function RaceRoomTermsIT() {
-  return <RaceRoomTerms lang="it" />;
-}
-
-export default RaceRoomTerms;
+export default WQuakeTerms;
 
