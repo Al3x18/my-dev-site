@@ -1,0 +1,11 @@
+{
+  // This file was created to suppress TypeScript errors in the IDE
+  // caused by @vercel/analytics package which includes a tsconfig.json
+  // that references a non-existent parent config file.
+  // This does not affect the build - it only fixes IDE warnings.
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "react-jsx"
+  },
+  "exclude": ["node_modules"]
+}
