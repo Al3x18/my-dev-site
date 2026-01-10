@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import './App.css'
 import LoadingScreen from './components/LoadingScreen'
 import Header from './components/Header'
@@ -78,6 +79,7 @@ function App() {
           <Footer />
         </main>
       )}
+      <Analytics />
     </div>
   )
 }
