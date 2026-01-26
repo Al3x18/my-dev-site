@@ -88,6 +88,73 @@ const projectsData = [
       github: 'https://github.com/Al3x18/reports-app-public'
     },
     highlight: false
+  },
+  {
+    id: 'codebreaker',
+    name: 'CodeBreaker',
+    icon: '🎯',
+    status: 'training',
+    platform: 'SwiftUI',
+    description: 'Mastermind-inspired game built with SwiftUI for learning and practice',
+    longDescription: 'A SwiftUI training project based on the Stanford CS193p: iOS Development with SwiftUI course. CodeBreaker is a color guessing game inspired by Mastermind, created to improve SwiftUI skills and understand declarative UI patterns. Features custom views for pegs and feedback markers.',
+    features: [
+      'SwiftUI declarative UI framework',
+      'Custom views for game pegs and markers',
+      'Exact and partial match feedback system',
+      'Color combination guessing mechanics',
+      'Clean SwiftUI architecture',
+      'Training project with learning comments'
+    ],
+    tech: ['Swift', 'SwiftUI', 'iOS'],
+    links: {
+      github: 'https://github.com/Al3x18/CodeBreaker'
+    },
+    highlight: false
+  },
+  {
+    id: 'thematch',
+    name: 'The Match',
+    icon: '⚽',
+    status: 'open-source',
+    platform: 'Flutter',
+    description: 'Football results app for top 5 EU leagues with match statistics and standings',
+    longDescription: 'A Flutter application that allows users to check football results and statistics for the top 5 European leagues. Features include match results, standings, round selection, season history from 2010/11 to current, match details with goalscorers, and theme customization (light/dark mode).',
+    features: [
+      'Top 5 EU leagues results (Premier League, La Liga, Serie A, Bundesliga, Ligue 1)',
+      'Match statistics with goalscorers and details',
+      'League standings and table view',
+      'Round and season selection (2010/11 to current)',
+      'Match date and time information',
+      'Light and dark theme support',
+      'API-football integration for real-time data'
+    ],
+    tech: ['Flutter', 'Dart', 'REST API', 'API-football'],
+    links: {
+      github: 'https://github.com/Al3x18/the-match-public'
+    },
+    highlight: false
+  },
+  {
+    id: 'hnews',
+    name: 'H-News',
+    icon: '📰',
+    status: 'training',
+    platform: 'SwiftUI',
+    description: 'Hacker News reader app built with SwiftUI and MVVM architecture',
+    longDescription: 'A SwiftUI training application for browsing Hacker News stories. Built as a learning exercise to practice SwiftUI development, MVVM architecture, and API integration. Features a clean and modern interface to browse through the newest stories posted on Hacker News with async/await for network requests.',
+    features: [
+      'Fetch and display new stories from Hacker News API',
+      'Modern SwiftUI interface design',
+      'MVVM architecture pattern implementation',
+      'Async/await for network requests',
+      'Settings view for app configuration',
+      'Clean project structure with separation of concerns'
+    ],
+    tech: ['Swift', 'SwiftUI', 'MVVM', 'Async/Await', 'REST API'],
+    links: {
+      github: 'https://github.com/Al3x18/H-News'
+    },
+    highlight: false
   }
 ]
 
@@ -103,7 +170,8 @@ function Projects() {
       'live': { label: 'LIVE', class: 'status-live' },
       'open-source': { label: 'OPEN SOURCE', class: 'status-opensource' },
       'active': { label: 'ACTIVE', class: 'status-active' },
-      'university': { label: 'UNIVERSITY PROJECT', class: 'status-university' }
+      'university': { label: 'UNIVERSITY PROJECT', class: 'status-university' },
+      'training': { label: 'TRAINING PROJECT', class: 'status-training' }
     }
     return statusMap[status] || { label: status, class: '' }
   }

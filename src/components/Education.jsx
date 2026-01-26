@@ -1,13 +1,59 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import './Education.css'
 import knowledgeData from '../content/knowledgeData'
 
 function Education() {
   const [expandedKnowledge, setExpandedKnowledge] = useState(null)
+  const [heights, setHeights] = useState({})
+  const contentRefs = useRef({})
 
   const toggleKnowledge = (id) => {
     setExpandedKnowledge(expandedKnowledge === id ? null : id)
   }
+
+  // Calculate height when knowledge is expanded
+  useEffect(() => {
+    if (expandedKnowledge) {
+      const contentElement = contentRefs.current[expandedKnowledge]
+      if (contentElement) {
+        // Use requestAnimationFrame for better timing
+        const measureHeight = () => {
+          // Force a reflow to ensure content is rendered
+          contentElement.offsetHeight
+          
+          // Get the computed styles to account for all spacing
+          const computedStyle = window.getComputedStyle(contentElement)
+          const paddingTop = parseFloat(computedStyle.paddingTop) || 0
+          const paddingBottom = parseFloat(computedStyle.paddingBottom) || 0
+          const marginTop = parseFloat(computedStyle.marginTop) || 0
+          const marginBottom = parseFloat(computedStyle.marginBottom) || 0
+          
+          // Get the actual scroll height of the content
+          const scrollHeight = contentElement.scrollHeight
+          
+          // Calculate total height: content + padding + margins
+          const contentTotalHeight = scrollHeight + paddingTop + paddingBottom
+          const marginsTotal = marginTop + marginBottom
+          
+          // Final height includes everything
+          const finalHeight = contentTotalHeight + marginsTotal
+          
+          // Set the calculated height with a small buffer for safety
+          setHeights(prev => ({
+            ...prev,
+            [expandedKnowledge]: Math.ceil(finalHeight) + 2
+          }))
+        }
+        
+        // Use double requestAnimationFrame to ensure DOM is fully updated
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            measureHeight()
+          })
+        })
+      }
+    }
+  }, [expandedKnowledge])
 
   return (
     <section className="section education-section">
@@ -47,7 +93,13 @@ function Education() {
               </span>
             </div>
             
-            <div className={`knowledge-content ${expandedKnowledge === item.id ? 'show' : ''}`}>
+            <div 
+              ref={el => contentRefs.current[item.id] = el}
+              className={`knowledge-content ${expandedKnowledge === item.id ? 'show' : ''}`}
+              style={expandedKnowledge === item.id && heights[item.id] ? {
+                maxHeight: `${heights[item.id]}px`
+              } : {}}
+            >
               <ul className="topics-list">
                 {item.topics.map((topic, i) => (
                   <li key={i}>

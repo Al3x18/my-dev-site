@@ -165,21 +165,28 @@
 .skill-details {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.3s ease;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .skill-details.show {
-  max-height: 400px;
+  /* Height is set dynamically via inline style */
+  overflow: visible;
+  padding: 0 1rem 1.25rem 1rem;
+  box-sizing: border-box;
+  will-change: max-height;
 }
 
 .details-content {
-  padding: 0 1.25rem 1.25rem 1.25rem;
   margin-left: 60px;
   background: var(--bg-primary);
   border-radius: 8px;
-  margin-right: 1rem;
-  padding: 1rem;
+  margin-right: 1.5rem;
+  padding: 1.25rem 1.5rem 1.5rem 1.5rem;
   border: 1px dashed color-mix(in srgb, var(--skill-color) 30%, transparent);
+  box-sizing: border-box;
+  min-height: fit-content;
 }
 
 .details-label {
@@ -205,18 +212,6 @@
   display: flex;
   align-items: flex-start;
   gap: 0.4rem;
-  animation: listFadeIn 0.3s ease-out both;
-}
-
-@keyframes listFadeIn {
-  from {
-    opacity: 0;
-    transform: translateX(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 
 .bullet {
@@ -238,6 +233,10 @@
     width: 100%;
     justify-content: space-between;
     padding-left: 60px;
+  }
+  
+  .skill-details.show {
+    padding: 0 0.75rem 1rem 0.75rem;
   }
   
   .details-content {

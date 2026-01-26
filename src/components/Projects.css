@@ -141,6 +141,12 @@
   border: 1px solid var(--neon-pink);
 }
 
+.status-training {
+  background: rgba(255, 165, 0, 0.15);
+  color: #ffa500;
+  border: 1px solid #ffa500;
+}
+
 .project-platform {
   font-size: 0.85rem;
   color: var(--text-muted);

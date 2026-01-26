@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import './Skills.css'
 
 const skillsData = [
@@ -11,14 +11,22 @@ const skillsData = [
     accentColor: '#54C5F8',
     description: 'Cross-platform mobile development framework',
     details: [
-      'Widget architecture & Navigation patterns',
-      'State Management: Riverpod, GetX',
-      'Firebase integration (Auth, Firestore, Storage)',
-      'Maps integration (flutter_map)',
-      'RevenueCat for in-app purchases',
-      'Local storage (Shared Preferences)',
-      'Custom UI/UX implementations',
-      'Play Store deployment experience'
+      'Widget architecture: StatelessWidget, StatefulWidget, and custom widgets',
+      'Navigation: Navigator, Routes, and navigation patterns',
+      'State Management: Riverpod, GetX for reactive state handling',
+      'MVVM Architecture: Model-View-ViewModel pattern implementation',
+      'Networking: HTTP package for REST API integration and data fetching',
+      'Firebase integration: Authentication, Firestore, Cloud Storage, Analytics',
+      'Maps integration: flutter_map for interactive map features',
+      'RevenueCat: In-app purchases and subscription management',
+      'Local storage: Shared Preferences for key-value data persistence',
+      'Complex widgets: SliverList, CustomScrollView, and scrollable widgets',
+      'Performance optimization: Lazy loading, pagination, image caching strategies',
+      'Custom UI/UX: Material Design and Cupertino widgets implementation',
+      'Responsive design: LayoutBuilder and MediaQuery for adaptive UIs',
+      'Async programming: Future, Stream, async/await patterns',
+      'Error handling: Try-catch, error boundaries, and user feedback',
+      'Play Store deployment: App signing, release management, and store optimization'
     ]
   },
   {
@@ -31,28 +39,40 @@ const skillsData = [
     description: 'Backend development & Automation',
     details: [
       'Flask framework for REST APIs',
+      'FastAPI: Modern async web framework for high-performance APIs',
       'Web scraping: Selenium, Playwright',
+      'Async programming: asyncio, async/await patterns',
       'Backend service development',
       'FastF1 integration (F1 telemetry)',
+      'Data processing: pandas for data analysis and manipulation',
       'API design and implementation',
+      'Third-party API integration',
+      'Deployment: Docker containerization and Railway platform',
       'Data processing and automation'
     ]
   },
   {
     id: 'javascript',
-    name: 'JavaScript',
+    name: 'JavaScript & TypeScript',
     icon: '⚡',
-    level: 'Basic-Intermediate',
+    level: 'Intermediate',
     color: '#F7DF1E',
     accentColor: '#F7DF1E',
     description: 'Web development & Dynamic applications',
     details: [
-      'ES6+ modern syntax and features',
-      'DOM manipulation and events',
-      'Asynchronous programming (Promises, async/await)',
-      'Fetch API for HTTP requests',
-      'JSON data handling',
-      'Basic Node.js understanding'
+      'ES6+ modern syntax: Arrow functions, template literals, destructuring',
+      'Advanced functions: Higher-order functions, closures, currying, function composition',
+      'Asynchronous programming: Promises, async/await patterns',
+      'Array methods: map, filter, reduce, flatMap, find, some, every',
+      'Objects & Collections: Object.keys/values/entries, Set, Map data structures',
+      'ES6 Modules: import/export syntax and module bundling',
+      'Vite: Build tool configuration and development workflow',
+      'TypeScript: Type system, interfaces, generics, and type definitions',
+      'DOM manipulation: Element selection, event handling, and DOM APIs',
+      'Fetch API: HTTP requests, headers, and response handling',
+      'Browser APIs: LocalStorage, SessionStorage, Geolocation, Canvas API',
+      'JSON: Data serialization and parsing',
+      'Node.js: Basic understanding of server-side JavaScript'
     ]
   },
   {
@@ -81,12 +101,13 @@ const skillsData = [
     accentColor: '#5382A1',
     description: 'Object-Oriented Programming & Enterprise',
     details: [
-      'OOP principles: Classes, Inheritance, Polymorphism',
-      'Java EE with Apache Tomcat',
-      'Database connectivity (JDBC)',
-      'Remote web request handling',
-      'Enterprise application architecture',
-      'University project experience'
+      'OOP principles: Classes, Inheritance, Polymorphism, Encapsulation',
+      'Collections Framework: HashMap, HashSet, TreeMap for data structures',
+      'Java EE: Enterprise application development with Apache Tomcat',
+      'Database connectivity: JDBC for database operations',
+      'Remote web request handling: HTTP client and server communication',
+      'Enterprise architecture: Multi-tier application design patterns',
+      'University project experience: Academic and practical implementations'
     ]
   },
   {
@@ -98,12 +119,14 @@ const skillsData = [
     accentColor: '#00599C',
     description: 'Systems Programming & Data Structures',
     details: [
-      'Linked Lists implementation',
-      'Binary Trees & traversal algorithms',
-      'Queue & Stack data structures',
-      'Memory management fundamentals',
-      'Pointers and dynamic allocation',
-      'Low-level programming concepts'
+      'Linked Lists: Implementation and manipulation',
+      'Binary Trees: Traversal algorithms (in-order, pre-order, post-order)',
+      'Queue & Stack: Data structures implementation and usage',
+      'Sorting algorithms: Quicksort implementation and optimization',
+      'Memory management: Dynamic allocation, memory leaks debugging',
+      'File I/O: File operations (fopen, fread, fwrite) for data persistence',
+      'Pointers: Pointer arithmetic and dynamic memory allocation',
+      'Low-level programming: System-level concepts and optimization'
     ]
   },
   {
@@ -115,11 +138,15 @@ const skillsData = [
     accentColor: '#9C033A',
     description: 'Game Development & Systems',
     details: [
-      'Language syntax and OOP',
-      '2D Game Engine development basics',
-      'Entity Component System (ECS) pattern',
-      'Game loop architecture',
-      'Performance optimization concepts'
+      'OOP: Classes, inheritance, polymorphism, virtual functions, abstract classes',
+      'STL Containers: vector, map, set for efficient data structures',
+      'Smart Pointers: shared_ptr for automatic memory management',
+      'Modern C++: Lambda expressions, auto keyword, and C++11+ features',
+      'SFML: Graphics library for game development and multimedia',
+      '2D Game Engine: Development basics and game architecture',
+      'Entity Component System (ECS): Design pattern for game entities',
+      'Game loop: Architecture and frame-based rendering',
+      'Performance optimization: Memory management and code efficiency'
     ]
   },
   {
@@ -131,13 +158,20 @@ const skillsData = [
     accentColor: '#F29111',
     description: 'Relational Database Management',
     details: [
-      'SQL queries and optimization',
-      'PostgreSQL database management',
-      'E-R (Entity-Relationship) modeling',
-      'Logical and conceptual schema design',
-      'ACID properties understanding',
-      'Physical memory management concepts',
-      'Database normalization'
+      'SQL queries: SELECT, INSERT, UPDATE, DELETE operations',
+      'Advanced queries: Subqueries and nested queries',
+      'Window functions: ROW_NUMBER, RANK, DENSE_RANK, aggregate functions over partitions',
+      'Triggers: Database triggers for automated actions',
+      'JOIN operations: INNER, LEFT, RIGHT, FULL OUTER joins',
+      'Transactions: BEGIN, COMMIT, ROLLBACK for data integrity',
+      'PostgreSQL: Database management and administration',
+      'MySQL: Relational database management system',
+      'SQLite: Lightweight embedded database',
+      'E-R (Entity-Relationship) modeling: Conceptual database design',
+      'Logical and conceptual schema design: Database architecture',
+      'ACID properties: Atomicity, Consistency, Isolation, Durability',
+      'Database normalization: Normal forms and schema optimization',
+      'Physical memory management: Database storage concepts'
     ]
   },
   {
@@ -159,29 +193,95 @@ const skillsData = [
   },
   {
     id: 'swift',
-    name: 'Swift',
+    name: 'Swift & SwiftUI',
     icon: '🍎',
-    level: 'Basic',
+    level: 'Intermediate',
     color: '#FA7343',
     accentColor: '#FF9F0A',
-    description: 'iOS Development basics',
+    description: 'iOS Development & Declarative UI Framework',
     details: [
-      'Language syntax and structure',
-      'Variables, constants and data types',
-      'Optionals and unwrapping',
-      'Control flow and loops',
-      'Functions and closures',
-      'Basic OOP concepts in Swift'
+      'SwiftUI: Declarative UI framework and component architecture',
+      'MVVM Architecture: Model-View-ViewModel pattern implementation',
+      'Animations: Custom animations and motion design',
+      'Transitions: View transitions and state-based animations',
+      'Navigation: NavigationStack, NavigationLink, and routing patterns',
+      'View Modifiers: Custom and built-in modifiers for UI composition',
+      'GeometryReader: Layout calculations and responsive UI design',
+      'Networking: URLSession, REST API integration, and HTTP requests',
+      'Codable: JSON encoding/decoding and data serialization',
+      'Error Handling: Result type, do-catch, guard statements, and throw',
+      'Generics: Generic programming for reusable code',
+      'Extensions: Extending existing types with new functionality',
+      'Protocols: Protocol-oriented programming and protocol extensions',
+      'Enums: Associated values, raw values, and pattern matching',
+      'Structs & Classes: Value types vs reference types',
+      'Observable: @Observable macro and reactive state management',
+      'Concurrency: Async/await, Task, TaskGroup, and Main Actor',
+      'Actors: Actor isolation for thread-safe concurrency',
+      'Data Persistence: SwiftData and UserDefaults for local storage',
+      'Property Wrappers: @State, @Binding, @Bindable, @Published, and custom wrappers',
+      'Combine Framework: Reactive programming and data flow management'
     ]
   }
 ]
 
 function Skills() {
   const [expandedSkill, setExpandedSkill] = useState(null)
+  const [heights, setHeights] = useState({})
+  const contentRefs = useRef({})
 
   const toggleSkill = (id) => {
     setExpandedSkill(expandedSkill === id ? null : id)
   }
+
+  // Calculate height when skill is expanded
+  useEffect(() => {
+    if (expandedSkill) {
+      const contentElement = contentRefs.current[expandedSkill]
+      if (contentElement) {
+        // Use requestAnimationFrame for better timing
+        const measureHeight = () => {
+          // Force a reflow to ensure content is rendered
+          contentElement.offsetHeight
+          
+          // Get the computed styles to account for all spacing
+          const computedStyle = window.getComputedStyle(contentElement)
+          const paddingTop = parseFloat(computedStyle.paddingTop) || 0
+          const paddingBottom = parseFloat(computedStyle.paddingBottom) || 0
+          const marginTop = parseFloat(computedStyle.marginTop) || 0
+          const marginBottom = parseFloat(computedStyle.marginBottom) || 0
+          
+          // Get the actual scroll height of the content
+          const scrollHeight = contentElement.scrollHeight
+          
+          // Calculate total height: content + padding + margins
+          const contentTotalHeight = scrollHeight + paddingTop + paddingBottom
+          const marginsTotal = marginTop + marginBottom
+          
+          // Add container padding (bottom padding of .skill-details.show = 1.25rem ≈ 20px)
+          const containerPadding = 20
+          
+          // Final height includes everything
+          const finalHeight = contentTotalHeight + marginsTotal + containerPadding
+          
+          // Set the calculated height with a small buffer for safety
+          setHeights(prev => ({
+            ...prev,
+            [expandedSkill]: Math.ceil(finalHeight) + 2
+          }))
+        }
+        
+        // Use double requestAnimationFrame to ensure DOM is fully updated
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            measureHeight()
+          })
+        })
+      }
+    }
+    // Note: We don't clear heights when collapsed to avoid unnecessary re-renders
+    // The height will be recalculated when the skill is expanded again
+  }, [expandedSkill])
 
   return (
     <section className="section skills-section">
@@ -219,12 +319,20 @@ function Skills() {
               </div>
             </div>
             
-            <div className={`skill-details ${expandedSkill === skill.id ? 'show' : ''}`}>
-              <div className="details-content">
+            <div 
+              className={`skill-details ${expandedSkill === skill.id ? 'show' : ''}`}
+              style={expandedSkill === skill.id && heights[skill.id] ? {
+                maxHeight: `${heights[skill.id]}px`
+              } : {}}
+            >
+              <div 
+                ref={el => contentRefs.current[skill.id] = el}
+                className="details-content"
+              >
                 <span className="details-label">$ cat {skill.id}_details.txt</span>
                 <ul className="details-list">
                   {skill.details.map((detail, i) => (
-                    <li key={i} style={{ animationDelay: `${i * 0.05}s` }}>
+                    <li key={i}>
                       <span className="bullet">→</span> {detail}
                     </li>
                   ))}
