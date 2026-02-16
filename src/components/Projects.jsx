@@ -85,7 +85,7 @@ const projectsData = [
     ],
     tech: ['Flutter', 'Firebase', 'Cloud Firestore', 'Firebase Auth'],
     links: {
-      github: 'https://github.com/Al3x18/reports-app-public'
+      github: 'https://github.com/Al3x18/reports'
     },
     highlight: false
   },
