@@ -8,6 +8,7 @@ import RaceRoomPolicy from './pages/RaceRoomPolicy.jsx'
 import { RaceRoomTermsEN, RaceRoomTermsIT } from './pages/RaceRoomTerms.jsx'
 import WQuakePolicy from './pages/WQuakePolicy.jsx'
 import WQuakeTerms from './pages/WQuakeTerms.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 // Initialize Vercel Speed Insights on the client side
 injectSpeedInsights()
@@ -22,6 +23,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/race-room-terms-it" element={<RaceRoomTermsIT />} />
         <Route path="/w-quake-policy" element={<WQuakePolicy />} />
         <Route path="/w-quake-terms" element={<WQuakeTerms />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
