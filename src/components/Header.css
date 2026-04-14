@@ -1,9 +1,11 @@
 .header {
-  padding: 1.5rem;
-  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-  border: 1px solid var(--bg-tertiary);
-  border-radius: 10px;
-  margin-bottom: 1.5rem;
+  padding: 1.75rem;
+  background: linear-gradient(145deg, rgba(17, 24, 32, 0.8) 0%, rgba(10, 14, 20, 0.9) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  margin-bottom: 2rem;
   position: relative;
   overflow: hidden;
   animation: slideDown 0.6s ease-out;
@@ -12,7 +14,7 @@
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateY(-30px);
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
@@ -26,10 +28,10 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--electric-blue), var(--neon-pink), var(--vivid-purple), var(--lime-green));
+  height: 2px;
+  background: linear-gradient(90deg, var(--electric-blue), var(--vivid-purple), var(--neon-pink), var(--lime-green));
   background-size: 300% 100%;
-  animation: gradientMove 5s ease infinite;
+  animation: gradientMove 6s ease infinite;
 }
 
 @keyframes gradientMove {
@@ -45,8 +47,8 @@
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.06) 0%, transparent 50%);
+    radial-gradient(circle at 15% 85%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 85% 15%, rgba(168, 85, 247, 0.04) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -64,36 +66,37 @@
 }
 
 .avatar {
-  width: 70px;
-  height: 70px;
+  width: 78px;
+  height: 78px;
   background: var(--bg-tertiary);
-  border-radius: 10px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   box-shadow: 
-    0 0 20px rgba(0, 212, 255, 0.25),
-    0 0 40px rgba(168, 85, 247, 0.1);
-  animation: pulse 3s ease-in-out infinite;
-  border: 2px solid var(--bg-tertiary);
-  transition: border-color 0.3s ease;
+    0 0 20px rgba(0, 212, 255, 0.2),
+    0 0 40px rgba(168, 85, 247, 0.08);
+  animation: pulse 4s ease-in-out infinite;
+  border: 2px solid rgba(255, 255, 255, 0.06);
+  transition: border-color 0.4s ease, transform 0.3s ease;
 }
 
 .avatar:hover {
-  border-color: var(--electric-blue);
+  border-color: rgba(0, 212, 255, 0.4);
+  transform: scale(1.03);
 }
 
 @keyframes pulse {
   0%, 100% {
     box-shadow: 
-      0 0 20px rgba(0, 212, 255, 0.25),
-      0 0 40px rgba(168, 85, 247, 0.1);
+      0 0 20px rgba(0, 212, 255, 0.18),
+      0 0 40px rgba(168, 85, 247, 0.08);
   }
   50% {
     box-shadow: 
-      0 0 30px rgba(0, 212, 255, 0.4),
-      0 0 60px rgba(168, 85, 247, 0.2);
+      0 0 28px rgba(0, 212, 255, 0.3),
+      0 0 50px rgba(168, 85, 247, 0.15);
   }
 }
 
@@ -101,7 +104,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .status-indicator {
@@ -142,7 +145,8 @@
 .name {
   font-size: 1.5rem;
   font-weight: 700;
-  background: linear-gradient(90deg, var(--electric-blue), var(--neon-pink));
+  background: linear-gradient(135deg, var(--electric-blue) 0%, var(--vivid-purple) 60%, var(--neon-pink) 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -176,12 +180,14 @@
 /* Bio / Code Block */
 .bio {
   font-size: 0.72rem;
-  line-height: 1.6;
-  background: var(--bg-tertiary);
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
+  line-height: 1.65;
+  background: rgba(26, 32, 41, 0.6);
+  padding: 0.85rem 1.1rem;
+  border-radius: var(--radius-sm);
   border-left: 3px solid var(--vivid-purple);
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-left: 3px solid var(--vivid-purple);
 }
 
 .code-block {
@@ -233,8 +239,8 @@
 /* Social Links */
 .social-links {
   display: flex;
-  gap: 0.75rem;
-  margin-top: 1.25rem;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
   flex-wrap: wrap;
   position: relative;
   z-index: 1;
@@ -243,11 +249,11 @@
 .social-link {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.4rem 0.85rem;
-  background: var(--bg-tertiary);
-  border: 1px solid transparent;
-  border-radius: 6px;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  background: rgba(26, 32, 41, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
   font-size: 0.75rem;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -262,39 +268,42 @@
 }
 
 .social-link.github:hover {
-  border-color: var(--text-primary);
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.08);
   color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .social-link.linkedin:hover {
-  border-color: #0077b5;
-  box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3);
+  border-color: rgba(0, 119, 181, 0.5);
+  box-shadow: 0 4px 18px rgba(0, 119, 181, 0.2);
   color: #0077b5;
+  background: rgba(0, 119, 181, 0.06);
 }
 
 .social-link.playstore:hover {
-  border-color: var(--lime-green);
-  box-shadow: 0 4px 15px rgba(0, 255, 102, 0.2);
+  border-color: rgba(0, 255, 102, 0.4);
+  box-shadow: 0 4px 18px rgba(0, 255, 102, 0.15);
   color: var(--lime-green);
+  background: rgba(0, 255, 102, 0.04);
 }
 
 .social-icon {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
 }
 
 /* Terminal Info */
 .terminal-info {
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
   padding-top: 1rem;
-  border-top: 1px dashed var(--bg-tertiary);
+  border-top: 1px dashed rgba(255, 255, 255, 0.06);
   position: relative;
   z-index: 1;
 }
 
 .terminal-info code {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
 }
 
 .terminal-info .prompt {
