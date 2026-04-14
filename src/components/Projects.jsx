@@ -26,6 +26,30 @@ const projectsData = [
     highlight: true
   },
   {
+    id: 'swiftf1telemetry',
+    name: 'SwiftF1Telemetry',
+    icon: '📡',
+    status: 'early-dev',
+    platform: 'Swift Package (SPM)',
+    description:
+      'Pure Swift library to load, parse, cache, and process Formula 1 telemetry on device',
+    longDescription:
+      'A Swift Package Manager library inspired by FastF1\'s workflow but with a Swift-native API: typed models, async/await, disk caching with configurable storage profiles, and chart-ready series for laps and driver comparisons. It resolves sessions from archive data, extracts fastest-lap telemetry, and supports two-driver comparisons \u2014 plus a small f1-cli for smoke testing. MIT licensed; documented releases (e.g. 0.3.2) via Git tags.',
+    features: [
+      'Session resolution from F1 archive data',
+      'Fastest-lap lookup and per-lap telemetry extraction',
+      'Two-driver fastest-lap comparison and delta series',
+      'Chart-ready speed/delta series by distance',
+      'Disk cache with configurable storage profiles',
+      'Public Codable models; f1-cli smoke runner'
+    ],
+    tech: ['Swift', 'Swift PM', 'Async/Await', 'Codable', 'CLI'],
+    links: {
+      github: 'https://github.com/Al3x18/SwiftF1Telemetry'
+    },
+    highlight: true
+  },
+  {
     id: 'wquake',
     name: 'W-Quake',
     icon: '🌍',
@@ -170,6 +194,7 @@ function Projects() {
       'live': { label: 'LIVE', class: 'status-live' },
       'open-source': { label: 'OPEN SOURCE', class: 'status-opensource' },
       'active': { label: 'ACTIVE', class: 'status-active' },
+      'early-dev': { label: 'EARLY DEV', class: 'status-early-dev' },
       'university': { label: 'UNIVERSITY PROJECT', class: 'status-university' },
       'training': { label: 'TRAINING PROJECT', class: 'status-training' }
     }
@@ -259,4 +284,3 @@ function Projects() {
 }
 
 export default Projects
-
