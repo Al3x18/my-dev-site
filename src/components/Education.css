@@ -5,10 +5,11 @@
 }
 
 .education-intro {
-  background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-card) 100%);
-  border-radius: 10px;
-  padding: 1rem;
+  background: linear-gradient(135deg, rgba(26, 32, 41, 0.6) 0%, var(--bg-card) 100%);
+  border-radius: var(--radius-md);
+  padding: 1.15rem;
   margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
   border-left: 3px solid var(--vivid-purple);
 }
 
@@ -53,8 +54,8 @@
 
 .knowledge-card {
   background: var(--bg-card);
-  border: 1px solid var(--bg-tertiary);
-  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
   overflow: hidden;
   animation: fadeInUp 0.5s ease-out both;
   transition: all 0.3s ease;
@@ -182,9 +183,9 @@
 
 .additional-skills {
   background: var(--bg-card);
-  border: 1px solid var(--bg-tertiary);
-  border-radius: 8px;
-  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+  padding: 1.15rem;
 }
 
 .additional-title {
@@ -208,12 +209,12 @@
 }
 
 .skill-tag {
-  background: var(--bg-tertiary);
+  background: rgba(26, 32, 41, 0.6);
   color: var(--text-secondary);
-  font-size: 0.75rem;
+  font-size: 0.73rem;
   padding: 0.35rem 0.75rem;
   border-radius: 20px;
-  border: 1px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
   cursor: default;
 }
