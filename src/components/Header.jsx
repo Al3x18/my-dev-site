@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
-import './Header.css'
 import logoImg from '../assets/A-dev-logo.png'
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 
 function Header() {
   const [typedText, setTypedText] = useState('')
-  const fullText = 'Full-Stack & Mobile Developer'
+  const fullText = 'Full-Stack Developer (Flutter, Swift, Python)'
   
   // Write fullText letter by letter with a delay of 50ms
   // in this function the state of typedText changes every 50ms until the fullText length is reached
@@ -33,7 +35,7 @@ function Header() {
     location: "Italy 🇮🇹",
     education: "L-31 Computer Science (In Progress)",
     skills: {
-      flutter: ["Flutter", "Dart", "Riverpod", "GetX"],
+      flutter: ["Flutter", "Dart", "Bloc", "Riverpod"],
       python: ["Python", "Flask", "Playwright", "Selenium"],
       javascript: ["JavaScript", "React"],
       c: ["C", "C++"],
@@ -45,133 +47,169 @@ function Header() {
     mainProject: "Race Room 🏎️"
   }
 
+  const featuredProjects = [
+    {
+      name: 'Race Room',
+      subtitle: 'Flutter app available on Play Store',
+      href: 'https://play.google.com/store/apps/details?id=com.adp.raceRoom',
+      highlighted: true,
+    },
+    {
+      name: 'SwiftF1Telemetry',
+      subtitle: 'Swift package',
+      href: 'https://swiftpackageindex.com/Al3x18/SwiftF1Telemetry',
+      highlighted: false,
+    },
+    {
+      name: 'Flutter W-Quake',
+      subtitle: 'Open-source app',
+      href: 'https://github.com/Al3x18/flutter_w-quake',
+      highlighted: false,
+    },
+  ]
+
+  const stackGroups = [
+    {
+      title: 'Mobile engineering',
+      tone: 'from-primary/20 to-primary/5 border-primary/30',
+      skills: ['Flutter', 'Dart', 'Bloc', 'Riverpod', 'Swift'],
+    },
+    {
+      title: 'Backend and automation',
+      tone: 'from-accent/20 to-accent/5 border-accent/30',
+      skills: ['Python', 'Flask', 'API Design', 'Playwright', 'Selenium'],
+    },
+    {
+      title: 'Tooling and data',
+      tone: 'from-fuchsia-500/20 to-fuchsia-500/5 border-fuchsia-400/30',
+      skills: ['Git', 'SQL', 'PostgreSQL', 'Vite', 'Firebase', 'JavaScript', 'React'],
+    },
+  ]
+
   return (
-    <header className="header">
-      <div className="header-content">
-        <div className="avatar-container">
-          <div className="avatar">
-            <img src={logoImg} alt="Alex De Pasquale Logo" className="avatar-img" />
-          </div>
-          <div className="status-indicator"></div>
-        </div>
-        
-        <div className="header-info">
-          <div className="name-line">
-            <span className="prompt-symbol">~/</span>
-            <h1 className="name">Alex De Pasquale</h1>
-          </div>
-          
-          <div className="role-line">
-            <span className="comment">// </span>
-            <span className="role">{typedText}</span>
-            <span className="cursor-inline">|</span>
-          </div>
-          
-          <div className="bio">
-            <div className="code-block">
-              <span className="keyword">const</span>{' '}
-              <span className="variable">developer</span> = {'{'}
+    <header className="space-y-6">
+      <Card className="overflow-hidden border-primary/30 bg-card/80">
+        <CardContent className="p-0">
+          <div className="grid gap-6 p-6 md:grid-cols-[auto,1fr] md:p-8">
+            <div className="relative mx-auto h-28 w-28 rounded-2xl border border-border bg-secondary/70 p-3 md:mx-0">
+              <img src={logoImg} alt="Alex De Pasquale Logo" className="h-full w-full object-contain" />
+              <span className="absolute -right-2 -top-2 h-5 w-5 rounded-full border-2 border-background bg-emerald-400" />
             </div>
-            
-            <div className="code-content">
-              <div className="code-line">
-                <span className="property">name</span>: <span className="string">"{developer.name}"</span>,
+
+            <div>
+              <div className="flex flex-wrap items-center gap-3">
+                <h1 className="text-3xl font-bold tracking-tight md:text-4xl">Alex De Pasquale</h1>
+                <Badge variant="secondary" className="bg-primary/15 text-primary">Available</Badge>
               </div>
-              <div className="code-line">
-                <span className="property">age</span>: <span className="string">"{developer.age}"</span>,
-              </div>
-              <div className="code-line">
-                <span className="property">location</span>: <span className="string">"{developer.location}"</span>,
-              </div>
-              <div className="code-line">
-                <span className="property">education</span>: <span className="string">"{developer.education}"</span>,
-              </div>
-              <div className="code-line nested-obj">
-                <span className="property">skills</span>: {'{'}
-              </div>
-              <div className="code-line indent-2">
-                <span className="property">Flutter/Dart</span>: [<span className="string">"{developer.skills.flutter.join('", "')}"</span>],
-              </div>
-              <div className="code-line indent-2">
-                <span className="property">Python</span>: [<span className="string">"{developer.skills.python.join('", "')}"</span>],
-              </div>
-              <div className="code-line indent-2">
-                <span className="property">JavaScript</span>: [<span className="string">"{developer.skills.javascript.join('", "')}"</span>],
-              </div>
-              <div className="code-line indent-2">
-                <span className="property">C/C++</span>: [<span className="string">"{developer.skills.c.join('", "')}"</span>],
-              </div>
-              <div className="code-line indent-2">
-                <span className="property">Java</span>: [<span className="string">"{developer.skills.java.join('", "')}"</span>],
-              </div>
-              <div className="code-line indent-2">
-                <span className="property">Database</span>: [<span className="string">"{developer.skills.database.join('", "')}"</span>],
-              </div>
-              <div className="code-line indent-2">
-                <span className="property">Other</span>: [<span className="string">"{developer.skills.other.join('", "')}"</span>]
-              </div>
-              <div className="code-line nested-close">
-                {'}'},
-              </div>
-              <div className="code-line">
-                <span className="property">knowledge</span>: [<span className="string">"{developer.knowledge.join('", "')}"</span>],
-              </div>
-              <div className="code-line">
-                <span className="property">mainProject</span>: <span className="string">"{developer.mainProject}"</span>,
-              </div>
-              {/* <div className="code-line">
-                <span className="property">availableForWork</span>: <span className="boolean">{developer.availableForWork.toString()}</span>
-              </div> */}
+
+              <p className="mt-2 text-lg text-muted-foreground">
+                {typedText}
+                <span className="ml-0.5 animate-pulse text-primary">|</span>
+              </p>
+
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                I design and build mobile products with a strong focus on usability, performance, and clean architecture.
+                My strongest stack today is Flutter (with Bloc and Riverpod), Swift, and Python for backend/API automation.
+              </p>
             </div>
-            
-            <div className="code-block">{'}'}</div>
           </div>
-        </div>
-      </div>
-      
-      <div className="social-links">
-        <a 
-          href="https://github.com/Al3x18" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="social-link github"
-        >
-          <svg viewBox="0 0 24 24" className="social-icon">
-            <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-          </svg>
-          <span>GitHub</span>
-        </a>
-        
-        <a 
-          href="https://www.linkedin.com/in/alex-de-pasquale-28535860/" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="social-link linkedin"
-        >
-          <svg viewBox="0 0 24 24" className="social-icon">
-            <path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-          </svg>
-          <span>LinkedIn</span>
-        </a>
-        
-        <a 
-          href="https://play.google.com/store/apps/details?id=com.adp.raceRoom" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="social-link playstore"
-        >
-          <svg viewBox="0 0 24 24" className="social-icon">
-            <path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
-          </svg>
-          <span>Play Store</span>
-        </a>
-      </div>
-      
-      <div className="terminal-info">
-        <code>
-          <span className="prompt">alex@portfolio</span>:<span className="path">~</span>$ <span className="cmd">neofetch</span>
-        </code>
-      </div>
+        </CardContent>
+      </Card>
+
+      <Card className="bg-card/80">
+        <CardContent className="p-5 md:p-6">
+          <div className="grid gap-5 md:grid-cols-[1.1fr,1.9fr]">
+            <div className="space-y-3 rounded-xl border border-border/70 bg-secondary/20 p-4">
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Profile snapshot</p>
+              <div className="space-y-2 text-sm">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-muted-foreground">Name</span>
+                  <span className="text-right font-medium text-foreground">{developer.name}</span>
+                </div>
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-muted-foreground">Age</span>
+                  <span className="font-medium text-foreground">{developer.age}</span>
+                </div>
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-muted-foreground">Location</span>
+                  <span className="font-medium text-foreground">{developer.location}</span>
+                </div>
+                <div className="flex items-start justify-between gap-3">
+                  <span className="text-muted-foreground">Education</span>
+                  <span className="max-w-[13rem] text-right font-medium text-foreground">{developer.education}</span>
+                </div>
+              </div>
+
+              <div className="pt-2">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Profiles</p>
+                <div className="flex flex-wrap gap-2">
+                  <a href="https://github.com/Al3x18" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" size="sm">GitHub</Button>
+                  </a>
+                  <a href="https://www.linkedin.com/in/alex-de-pasquale-28535860/" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" size="sm">LinkedIn</Button>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div className="mb-3">
+                <h2 className="text-base font-semibold">Core capabilities</h2>
+                <p className="text-xs uppercase tracking-wide text-muted-foreground">Competencies grouped by domain</p>
+              </div>
+              <div className="space-y-3">
+                {stackGroups.map((group) => (
+                  <div
+                    key={group.title}
+                    className={`rounded-xl border bg-gradient-to-r p-3.5 ${group.tone}`}
+                  >
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-foreground/90">
+                      {group.title}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {group.skills.map((item) => (
+                        <Badge key={item} variant="outline" className="border-white/20 bg-black/20 text-foreground">
+                          {item}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+        </CardContent>
+      </Card>
+
+      <Card className="bg-card/80">
+        <CardContent className="p-5">
+          <div className="mb-3 flex items-center justify-between gap-2">
+            <h2 className="text-base font-semibold">Featured projects</h2>
+            <Badge variant="secondary" className="bg-secondary/60 text-xs">Quick access</Badge>
+          </div>
+
+          <div className="grid gap-2 md:grid-cols-3">
+            {featuredProjects.map((project) => (
+              <a
+                key={project.name}
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`rounded-lg border p-3 transition hover:border-primary/40 hover:bg-secondary/40 ${
+                  project.highlighted
+                    ? 'border-primary/35 bg-primary/10'
+                    : 'border-border bg-secondary/20'
+                }`}
+              >
+                <p className="text-sm font-medium">{project.name}</p>
+                <p className="text-xs text-muted-foreground">{project.subtitle}</p>
+              </a>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
     </header>
   )
 }

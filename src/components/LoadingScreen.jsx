@@ -1,54 +1,30 @@
-import './LoadingScreen.css'
 import logoImg from '../assets/A-dev-logo.png'
 
 function LoadingScreen({ progress, currentTask }) {
   return (
-    <div className="loading-screen">
-      <div className="loading-content">
-        {/* Logo */}
-        <div className="loading-logo">
-          <img src={logoImg} alt="Logo" className="logo-img" />
-          <div className="logo-glow"></div>
+    <div className="fixed inset-0 grid place-items-center bg-background px-6">
+      <div className="w-full max-w-md rounded-2xl border border-border bg-card/80 p-6 text-center shadow-2xl backdrop-blur">
+        <div className="mx-auto mb-4 h-16 w-16 overflow-hidden rounded-xl border border-border bg-secondary/60 p-2">
+          <img src={logoImg} alt="Logo" className="h-full w-full object-contain" />
         </div>
-        
-        {/* Name */}
-        <h1 className="loading-name">Alex De Pasquale</h1>
-        <p className="loading-role">Full-Stack & Mobile Developer</p>
-        
-        {/* Progress bar */}
-        <div className="progress-container">
-          <div className="progress-bar">
-            <div 
-              className="progress-fill" 
+        <h1 className="text-2xl font-semibold">Alex De Pasquale</h1>
+        <p className="mt-1 text-sm text-muted-foreground">Full-Stack & Mobile Developer</p>
+
+        <div className="mt-6 space-y-2">
+          <div className="h-2 overflow-hidden rounded-full bg-secondary">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all"
               style={{ width: `${progress}%` }}
-            ></div>
-            <div className="progress-glow" style={{ left: `${progress}%` }}></div>
+            />
           </div>
-          <span className="progress-percent">{progress}%</span>
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
+            <span>{currentTask}</span>
+            <span>{progress}%</span>
+          </div>
         </div>
-        
-        {/* Current task */}
-        <div className="task-container">
-          <span className="task-icon">⚡</span>
-          <span className="task-text">{currentTask}</span>
-        </div>
-        
-        {/* Terminal decoration */}
-        <div className="terminal-decoration">
-          <span className="terminal-prompt">~/portfolio $</span>
-          <span className="terminal-cmd">npm run awesome</span>
-          <span className="terminal-cursor">▊</span>
-        </div>
+
+        <p className="mt-5 text-xs text-muted-foreground">Press any key or click to skip</p>
       </div>
-      
-      {/* Skip hint */}
-      <p className="skip-hint">
-        <span className="skip-key">↵</span> Press any key or tap to skip
-      </p>
-      
-      {/* Background decoration */}
-      <div className="bg-grid"></div>
-      <div className="bg-gradient"></div>
     </div>
   )
 }

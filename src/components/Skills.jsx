@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect } from 'react'
-import './Skills.css'
+import { useState } from 'react'
+import { Badge } from '@/components/ui/badge'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 
 const skillsData = [
   {
@@ -227,119 +228,56 @@ const skillsData = [
 
 function Skills() {
   const [expandedSkill, setExpandedSkill] = useState(null)
-  const [heights, setHeights] = useState({})
-  const contentRefs = useRef({})
 
   const toggleSkill = (id) => {
     setExpandedSkill(expandedSkill === id ? null : id)
   }
 
-  // Calculate height when skill is expanded
-  useEffect(() => {
-    if (expandedSkill) {
-      const contentElement = contentRefs.current[expandedSkill]
-      if (contentElement) {
-        // Use requestAnimationFrame for better timing
-        const measureHeight = () => {
-          // Force a reflow to ensure content is rendered
-          contentElement.offsetHeight
-          
-          // Get the computed styles to account for all spacing
-          const computedStyle = window.getComputedStyle(contentElement)
-          const paddingTop = parseFloat(computedStyle.paddingTop) || 0
-          const paddingBottom = parseFloat(computedStyle.paddingBottom) || 0
-          const marginTop = parseFloat(computedStyle.marginTop) || 0
-          const marginBottom = parseFloat(computedStyle.marginBottom) || 0
-          
-          // Get the actual scroll height of the content
-          const scrollHeight = contentElement.scrollHeight
-          
-          // Calculate total height: content + padding + margins
-          const contentTotalHeight = scrollHeight + paddingTop + paddingBottom
-          const marginsTotal = marginTop + marginBottom
-          
-          // Add container padding (bottom padding of .skill-details.show = 1.25rem ≈ 20px)
-          const containerPadding = 20
-          
-          // Final height includes everything
-          const finalHeight = contentTotalHeight + marginsTotal + containerPadding
-          
-          // Set the calculated height with a small buffer for safety
-          setHeights(prev => ({
-            ...prev,
-            [expandedSkill]: Math.ceil(finalHeight) + 2
-          }))
-        }
-        
-        // Use double requestAnimationFrame to ensure DOM is fully updated
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            measureHeight()
-          })
-        })
-      }
-    }
-    // Note: We don't clear heights when collapsed to avoid unnecessary re-renders
-    // The height will be recalculated when the skill is expanded again
-  }, [expandedSkill])
-
   return (
-    <section className="section skills-section">
-      <h2 className="section-title">skills --list</h2>
-      
-      <div className="skills-list">
+    <section>
+      <div className="mb-5">
+        <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">Skills</h2>
+        <p className="mt-1 text-sm text-muted-foreground">Core technologies and capabilities I use in production and side projects.</p>
+      </div>
+
+      <div className="grid gap-4">
         {skillsData.map((skill, index) => (
-          <div 
+          <Card
             key={skill.id}
-            className={`skill-item ${expandedSkill === skill.id ? 'expanded' : ''}`}
-            style={{ 
-              '--skill-color': skill.color,
-              '--skill-accent': skill.accentColor,
-              animationDelay: `${index * 0.05}s`
-            }}
+            className={`transition-colors ${expandedSkill === skill.id ? 'border-primary/40' : ''}`}
+            style={{ animationDelay: `${index * 0.05}s` }}
           >
-            <div 
-              className="skill-header"
+            <button
+              className="w-full text-left"
               onClick={() => toggleSkill(skill.id)}
+              aria-expanded={expandedSkill === skill.id}
             >
-              <div className="skill-left">
-                <div className="skill-icon">{skill.icon}</div>
-                <div className="skill-info">
-                  <h3 className="skill-name">{skill.name}</h3>
-                  <span className="skill-description">{skill.description}</span>
+              <CardHeader>
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <CardTitle className="flex items-center gap-2 text-lg">
+                      <span>{skill.icon}</span> {skill.name}
+                    </CardTitle>
+                    <CardDescription className="mt-1">{skill.description}</CardDescription>
+                  </div>
+                  <Badge variant="secondary" className="shrink-0 bg-secondary/70">{skill.level}</Badge>
                 </div>
-              </div>
-              <div className="skill-right">
-                <span className="skill-level">{skill.level}</span>
-                <div className={`expand-icon ${expandedSkill === skill.id ? 'rotated' : ''}`}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="6,9 12,15 18,9"></polyline>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            
-            <div 
-              className={`skill-details ${expandedSkill === skill.id ? 'show' : ''}`}
-              style={expandedSkill === skill.id && heights[skill.id] ? {
-                maxHeight: `${heights[skill.id]}px`
-              } : {}}
-            >
-              <div 
-                ref={el => contentRefs.current[skill.id] = el}
-                className="details-content"
-              >
-                <span className="details-label">$ cat {skill.id}_details.txt</span>
-                <ul className="details-list">
+              </CardHeader>
+            </button>
+
+            {expandedSkill === skill.id && (
+              <CardContent className="pt-0">
+                <ul className="space-y-2 text-sm text-muted-foreground">
                   {skill.details.map((detail, i) => (
-                    <li key={i}>
-                      <span className="bullet">→</span> {detail}
+                    <li key={i} className="flex gap-2">
+                      <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                      <span>{detail}</span>
                     </li>
                   ))}
                 </ul>
-              </div>
-            </div>
-          </div>
+              </CardContent>
+            )}
+          </Card>
         ))}
       </div>
     </section>

@@ -1,134 +1,128 @@
-import { useState, useRef, useEffect } from 'react'
-import './Education.css'
+import { useEffect, useState } from 'react'
 import knowledgeData from '../content/knowledgeData'
+import { Badge } from '@/components/ui/badge'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 function Education() {
-  const [expandedKnowledge, setExpandedKnowledge] = useState(null)
-  const [heights, setHeights] = useState({})
-  const contentRefs = useRef({})
+  const [activeKnowledgeId, setActiveKnowledgeId] = useState(null)
 
   const toggleKnowledge = (id) => {
-    setExpandedKnowledge(expandedKnowledge === id ? null : id)
+    setActiveKnowledgeId(activeKnowledgeId === id ? null : id)
   }
 
-  // Calculate height when knowledge is expanded
+  const closeOverlay = () => {
+    setActiveKnowledgeId(null)
+  }
+
+  const activeKnowledge = knowledgeData.find((item) => item.id === activeKnowledgeId) ?? null
+
   useEffect(() => {
-    if (expandedKnowledge) {
-      const contentElement = contentRefs.current[expandedKnowledge]
-      if (contentElement) {
-        // Use requestAnimationFrame for better timing
-        const measureHeight = () => {
-          // Force a reflow to ensure content is rendered
-          contentElement.offsetHeight
-          
-          // Get the computed styles to account for all spacing
-          const computedStyle = window.getComputedStyle(contentElement)
-          const paddingTop = parseFloat(computedStyle.paddingTop) || 0
-          const paddingBottom = parseFloat(computedStyle.paddingBottom) || 0
-          const marginTop = parseFloat(computedStyle.marginTop) || 0
-          const marginBottom = parseFloat(computedStyle.marginBottom) || 0
-          
-          // Get the actual scroll height of the content
-          const scrollHeight = contentElement.scrollHeight
-          
-          // Calculate total height: content + padding + margins
-          const contentTotalHeight = scrollHeight + paddingTop + paddingBottom
-          const marginsTotal = marginTop + marginBottom
-          
-          // Final height includes everything
-          const finalHeight = contentTotalHeight + marginsTotal
-          
-          // Set the calculated height with a small buffer for safety
-          setHeights(prev => ({
-            ...prev,
-            [expandedKnowledge]: Math.ceil(finalHeight) + 2
-          }))
-        }
-        
-        // Use double requestAnimationFrame to ensure DOM is fully updated
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            measureHeight()
-          })
-        })
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        closeOverlay()
       }
     }
-  }, [expandedKnowledge])
+
+    if (activeKnowledge) {
+      window.addEventListener('keydown', handleEscape)
+      document.body.style.overflow = 'hidden'
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleEscape)
+      document.body.style.overflow = ''
+    }
+  }, [activeKnowledge])
 
   return (
-    <section className="section education-section">
-      <h2 className="section-title">cat ./education/knowledge.log</h2>
-      
-      <div className="education-intro">
-        <div className="edu-header">
-          <span className="edu-icon">🎓</span>
-          <div className="edu-info">
-            <h3 className="edu-title">University Education</h3>
-            <p className="edu-subtitle">L-31 Computer Science • In Progress</p>
-          </div>
-        </div>
-        <p className="edu-description">
-          Currently pursuing a Bachelor's degree in Computer Science (L-31). 
-          Solid academic background with hands-on experience in software development, 
-          systems programming, and theoretical foundations. The following areas have been studied in depth 
-          through university courses and practical projects.
+    <section>
+      <div className="mb-5">
+        <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">Education</h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Bachelor&apos;s degree in Computer Science (L-31), currently in progress.
         </p>
       </div>
-      
-      <div className="knowledge-grid">
-        {knowledgeData.map((item, index) => (
-          <div 
-            key={item.id}
-            className={`knowledge-card ${expandedKnowledge === item.id ? 'expanded' : ''}`}
-            style={{ animationDelay: `${index * 0.1}s` }}
-          >
-            <div 
-              className="knowledge-header"
-              onClick={() => toggleKnowledge(item.id)}
-            >
-              <span className="knowledge-icon">{item.icon}</span>
-              <h4 className="knowledge-name">{item.name}</h4>
-              <span className={`expand-indicator ${expandedKnowledge === item.id ? 'active' : ''}`}>
-                {expandedKnowledge === item.id ? '−' : '+'}
-              </span>
+
+      <Card className="mb-4 bg-card/80">
+        <CardHeader>
+          <CardTitle>University knowledge areas</CardTitle>
+          <CardDescription>
+            Core topics studied in depth through coursework and practical projects.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-3 md:grid-cols-2">
+          {knowledgeData.map((item, index) => (
+            <div key={item.id}>
+              <button
+                className="w-full rounded-lg border border-border bg-secondary/40 px-4 py-3 text-left transition hover:border-primary/40"
+                onClick={() => toggleKnowledge(item.id)}
+                aria-expanded={activeKnowledgeId === item.id}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="flex items-center justify-between">
+                  <p className="font-medium">{item.icon} {item.name}</p>
+                  <span className="text-xs text-muted-foreground">{activeKnowledgeId === item.id ? 'Hide' : 'View topics'}</span>
+                </div>
+              </button>
             </div>
-            
-            <div 
-              ref={el => contentRefs.current[item.id] = el}
-              className={`knowledge-content ${expandedKnowledge === item.id ? 'show' : ''}`}
-              style={expandedKnowledge === item.id && heights[item.id] ? {
-                maxHeight: `${heights[item.id]}px`
-              } : {}}
-            >
-              <ul className="topics-list">
-                {item.topics.map((topic, i) => (
-                  <li key={i}>
-                    <span className="topic-marker">#</span>
-                    {topic}
+          ))}
+        </CardContent>
+      </Card>
+
+      <div className="flex flex-wrap gap-2">
+        {[
+          "Git & Version Control",
+          "RESTful API Design",
+          "Clean Architecture",
+          "MVVM Design Pattern",
+          "MVC Design Pattern",
+          "Problem Solving",
+          "Self-Learning",
+          "Technical Documentation",
+        ].map((skill) => (
+          <Badge key={skill} variant="outline" className="bg-secondary/40">{skill}</Badge>
+        ))}
+      </div>
+
+      {activeKnowledge && (
+        <div
+          className="fixed inset-0 z-50 grid place-items-center bg-black/60 p-4 backdrop-blur-sm"
+          onClick={closeOverlay}
+        >
+          <div
+            className="max-h-[85vh] w-full max-w-2xl overflow-hidden rounded-xl border border-border bg-card shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="knowledge-dialog-title"
+          >
+            <div className="flex items-center justify-between border-b border-border px-5 py-4">
+              <h3 id="knowledge-dialog-title" className="text-lg font-semibold">
+                {activeKnowledge.icon} {activeKnowledge.name}
+              </h3>
+              <button
+                type="button"
+                onClick={closeOverlay}
+                className="rounded-md border border-border px-2 py-1 text-sm text-muted-foreground transition hover:border-primary/40 hover:text-foreground"
+                aria-label="Close topics"
+              >
+                Close
+              </button>
+            </div>
+
+            <div className="max-h-[calc(85vh-73px)] overflow-y-auto px-5 py-4">
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                {activeKnowledge.topics.map((topic, i) => (
+                  <li key={i} className="flex gap-2">
+                    <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                    <span>{topic}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-        ))}
-      </div>
-      
-      <div className="additional-skills">
-        <h3 className="additional-title">
-          <span className="cmd-symbol">$</span> Additional Competencies
-        </h3>
-        <div className="skills-tags">
-          <span className="skill-tag">Git & Version Control</span>
-          <span className="skill-tag">RESTful API Design</span>
-          <span className="skill-tag">Clean Architecture</span>
-          <span className="skill-tag">MVVM Design Pattern</span>
-          <span className="skill-tag">MVC Design Pattern</span>
-          <span className="skill-tag">Singleton Design Pattern</span>
-          <span className="skill-tag">Problem Solving</span>
-          <span className="skill-tag">Self-Learning</span>
-          <span className="skill-tag">Technical Documentation</span>
         </div>
-      </div>
+      )}
     </section>
   )
 }

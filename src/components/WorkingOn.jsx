@@ -1,4 +1,5 @@
-import './WorkingOn.css'
+import { Badge } from '@/components/ui/badge'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 
 const workingOn = [
   {
@@ -17,26 +18,27 @@ const workingOn = [
 
 function WorkingOn() {
   return (
-    <section className="section working-on-section">
-      <h2 className="section-title">cat ./working-on.log</h2>
-      
-      <div className="skills-container">
+    <section>
+      <div className="mb-5">
+        <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">Currently learning</h2>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2">
         {workingOn.map((skill, index) => (
-          <div 
+          <Card
             key={skill.id}
-            className="skill-card"
+            className="bg-card/80"
             style={{ animationDelay: `${index * 0.15}s` }}
           >
-            <div className="skill-header">
-              <div className="skill-icon">{skill.icon}</div>
-              <div className="skill-info">
-                <h3 className="skill-name">{skill.name}</h3>
-                <span className="skill-status">IN PROGRESS</span>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-lg">{skill.icon} {skill.name}</CardTitle>
+                <Badge variant="secondary" className="bg-primary/15 text-primary">In progress</Badge>
               </div>
-            </div>
-            
-            <p className="skill-description">{skill.description}</p>
-          </div>
+              <CardDescription>{skill.description}</CardDescription>
+            </CardHeader>
+            <CardContent />
+          </Card>
         ))}
       </div>
     </section>

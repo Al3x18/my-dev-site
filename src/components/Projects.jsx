@@ -1,5 +1,7 @@
 import { useState } from 'react'
-import './Projects.css'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 const projectsData = [
   {
@@ -45,7 +47,8 @@ const projectsData = [
     ],
     tech: ['Swift', 'Swift PM', 'Async/Await', 'Codable', 'CLI'],
     links: {
-      github: 'https://github.com/Al3x18/SwiftF1Telemetry'
+      github: 'https://github.com/Al3x18/SwiftF1Telemetry',
+      swiftpackageindex: 'https://swiftpackageindex.com/Al3x18/SwiftF1Telemetry'
     },
     highlight: true
   },
@@ -202,80 +205,81 @@ function Projects() {
   }
 
   return (
-    <section className="section projects-section">
-      <h2 className="section-title">ls -la ./projects</h2>
-      
-      <div className="projects-container">
+    <section>
+      <div className="mb-5">
+        <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">Featured work</h2>
+        <p className="mt-1 text-sm text-muted-foreground">Selected projects with product impact, technical depth and clear outcomes.</p>
+      </div>
+
+      <div className="grid gap-4">
         {projectsData.map((project, index) => {
           const status = getStatusBadge(project.status)
           return (
-            <div 
+            <Card
               key={project.id}
-              className={`project-card ${expandedProject === project.id ? 'expanded' : ''} ${project.highlight ? 'featured' : ''}`}
+              className={`${expandedProject === project.id ? 'border-primary/40' : ''} ${project.highlight ? 'bg-card/90' : ''}`}
               style={{ animationDelay: `${index * 0.15}s` }}
             >
-              <div 
-                className="project-header"
-                onClick={() => toggleProject(project.id)}
-              >
-                <div className="project-icon">{project.icon}</div>
-                <div className="project-main-info">
-                  <div className="project-title-row">
-                    <h3 className="project-name">{project.name}</h3>
-                    <span className={`status-badge ${status.class}`}>{status.label}</span>
-                    {project.highlight && <span className="featured-badge">FEATURED PROJECT</span>}
+              <button className="w-full text-left" onClick={() => toggleProject(project.id)}>
+                <CardHeader>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-xl">{project.icon}</span>
+                    <CardTitle className="text-xl">{project.name}</CardTitle>
+                    <Badge variant="secondary" className="bg-secondary/70">{status.label}</Badge>
+                    {project.highlight && <Badge className="bg-primary/20 text-primary">Featured</Badge>}
                   </div>
-                  <span className="project-platform">{project.platform}</span>
-                </div>
-                <div className={`expand-arrow ${expandedProject === project.id ? 'rotated' : ''}`}>
-                  ›
-                </div>
-              </div>
-              
-              <p className="project-description">{project.description}</p>
-              
-              <div className={`project-details ${expandedProject === project.id ? 'show' : ''}`}>
-                <div className="details-inner">
-                  <p className="project-long-desc">{project.longDescription}</p>
-                  
-                  <div className="features-section">
-                    <span className="section-label">$ cat features.md</span>
-                    <ul className="features-list">
+                  <CardDescription>{project.platform}</CardDescription>
+                  <p className="text-sm text-muted-foreground">{project.description}</p>
+                </CardHeader>
+              </button>
+
+              {expandedProject === project.id && (
+                <CardContent className="space-y-5 pt-0">
+                  <p className="text-sm leading-relaxed text-muted-foreground">{project.longDescription}</p>
+
+                  <div>
+                    <p className="mb-2 text-sm font-medium">Highlights</p>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
                       {project.features.map((feature, i) => (
-                        <li key={i}><span className="feature-bullet">•</span> {feature}</li>
+                        <li key={i} className="flex gap-2">
+                          <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                          <span>{feature}</span>
+                        </li>
                       ))}
                     </ul>
                   </div>
-                  
-                  <div className="tech-stack">
-                    <span className="section-label">Tech Stack:</span>
-                    <div className="tech-tags">
-                      {project.tech.map((tech, i) => (
-                        <span key={i} className="tech-tag">{tech}</span>
-                      ))}
-                    </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, i) => (
+                      <Badge key={i} variant="outline" className="bg-secondary/40">{tech}</Badge>
+                    ))}
                   </div>
-                  
-                  <div className="project-links">
+
+                  <div className="flex flex-wrap gap-2">
                     {project.links.playstore && (
-                      <a href={project.links.playstore} target="_blank" rel="noopener noreferrer" className="project-link playstore">
-                        <span className="link-icon">▶</span> Play Store
+                      <a href={project.links.playstore} target="_blank" rel="noopener noreferrer">
+                        <Button>Play Store</Button>
                       </a>
                     )}
                     {project.links.github && (
-                      <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="project-link github">
-                        <span className="link-icon">⌥</span> GitHub
+                      <a href={project.links.github} target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline">GitHub</Button>
+                      </a>
+                    )}
+                    {project.links.swiftpackageindex && (
+                      <a href={project.links.swiftpackageindex} target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline">Swift Package Index</Button>
                       </a>
                     )}
                     {project.links.backend && (
-                      <a href={project.links.backend} target="_blank" rel="noopener noreferrer" className="project-link backend">
-                        <span className="link-icon">⚙</span> Backend Repo
+                      <a href={project.links.backend} target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline">Backend Repo</Button>
                       </a>
                     )}
                   </div>
-                </div>
-              </div>
-            </div>
+                </CardContent>
+              )}
+            </Card>
           )
         })}
       </div>
