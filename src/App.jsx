@@ -67,8 +67,8 @@ function App() {
         <LoadingScreen progress={progress} currentTask={currentTask} />
       ) : (
         <main className="container py-6 md:py-10">
-          <div className="sticky top-8 z-40 mb-8 rounded-2xl border border-primary/20 bg-gradient-to-r from-card/95 via-card/90 to-secondary/70 p-2 shadow-lg shadow-black/20 backdrop-blur-xl md:p-3">
-            <nav className="grid grid-cols-2 gap-2 text-sm md:grid-cols-6 md:gap-2.5">
+          <div className="mb-6 border-b border-border/60 pb-3 md:mb-8 md:pb-4">
+            <nav className="flex w-full min-w-0 items-stretch gap-1.5 sm:gap-2">
               {[
                 ['Home', '#home'],
                 ['Skills', '#skills'],
@@ -80,7 +80,7 @@ function App() {
                 <a
                   key={href}
                   href={href}
-                  className="rounded-full border border-white/10 bg-secondary/45 px-3.5 py-2 text-center font-medium text-muted-foreground transition duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:bg-primary/15 hover:text-foreground"
+                  className="min-w-0 flex-1 rounded-full border border-border/70 bg-secondary/35 px-1.5 py-1.5 text-center text-xs font-medium text-muted-foreground transition hover:border-primary/40 hover:bg-primary/10 hover:text-foreground sm:px-2.5 sm:text-sm md:px-3.5 md:py-2"
                 >
                   {label}
                 </a>
