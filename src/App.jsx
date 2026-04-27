@@ -68,7 +68,7 @@ function App() {
       ) : (
         <main className="container py-6 md:py-10">
           <div className="mb-6 border-b border-border/60 pb-3 md:mb-8 md:pb-4">
-            <nav className="flex w-full min-w-0 items-stretch gap-1.5 sm:gap-2">
+            <nav className="grid w-full grid-cols-3 gap-2 md:flex md:min-w-0 md:items-stretch md:gap-2">
               {[
                 ['Home', '#home'],
                 ['Skills', '#skills'],
@@ -80,7 +80,7 @@ function App() {
                 <a
                   key={href}
                   href={href}
-                  className="min-w-0 flex-1 rounded-full border border-border/70 bg-secondary/35 px-1.5 py-1.5 text-center text-xs font-medium text-muted-foreground transition hover:border-primary/40 hover:bg-primary/10 hover:text-foreground sm:px-2.5 sm:text-sm md:px-3.5 md:py-2"
+                  className="flex min-h-10 w-full items-center justify-center rounded-full border border-border/70 bg-secondary/35 px-2 py-2 text-center text-xs font-medium leading-snug text-muted-foreground transition hover:border-primary/40 hover:bg-primary/10 hover:text-foreground whitespace-normal md:min-h-0 md:flex-1 md:px-3.5 md:py-2 md:text-sm"
                 >
                   {label}
                 </a>
