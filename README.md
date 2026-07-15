@@ -1,16 +1,21 @@
-# Alex De Pasquale - Portfolio
+# Alex De Pasquale — Portfolio
 
-Live: [alexdepasquale.dev](https://alexdepasquale.dev)
+Personal portfolio for showcasing my mobile and full-stack development work, technical skills, education, and current learning path.
 
-Personal portfolio built with React + Vite and a `shadcn/ui` + Tailwind.
+Live at [alexdepasquale.dev](https://alexdepasquale.dev).
+
+## Highlights
+
+- Minimal editorial design with responsive layouts
+- Expandable project and skill details
+- Interactive university knowledge section
+- Project, profile, and contact links
+- Local Roboto and Roboto Mono fonts
+- Legal pages for Race Room and W-Quake
 
 ## Tech stack
 
-- React
-- Vite
-- React Router
-- Tailwind CSS
-- shadcn/ui (custom UI components)
+React, Vite, React Router, Tailwind CSS, and custom shadcn/ui-based components. The site is deployed on Vercel with Analytics and Speed Insights.
 
 ## Development
 
@@ -19,9 +24,10 @@ npm install
 npm run dev
 ```
 
-Build:
+Available checks:
 
 ```bash
+npm run lint
 npm run build
 ```
 
@@ -29,22 +35,10 @@ npm run build
 
 ```text
 src/
-├── assets/                # Static assets
-├── components/
-│   ├── ui/                # Reusable UI primitives
-│   ├── Header.jsx
-│   ├── Skills.jsx
-│   ├── Projects.jsx
-│   ├── Education.jsx
-│   ├── Contact.jsx
-│   ├── Footer.jsx
-│   ├── LoadingScreen.jsx
-│   └── LegalPage.jsx
-├── content/               # Portfolio and legal page content
-├── pages/                 # Route pages (terms, policy, not found)
-├── lib/
-│   └── utils.js
-├── App.jsx
-├── main.jsx
-└── index.css
+├── components/   # Portfolio sections and UI primitives
+├── content/      # Education and legal content
+├── pages/        # Legal and fallback routes
+├── assets/       # Images and branding
+├── App.jsx       # Main portfolio layout
+└── index.css     # Theme and global styles
 ```
