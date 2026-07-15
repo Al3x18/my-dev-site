@@ -132,7 +132,7 @@ export const policyEN = {
       title: "9. Open Source Transparency",
       content: [
         "W-Quake is open-source software released under the MIT License. The complete source code is available at:",
-        "**https://github.com/Al3x18/flutter_w-quake**",
+        "https://github.com/Al3x18/flutter_w-quake",
         "You can review the code to verify our privacy practices and see exactly what data the App accesses and how it's used."
       ]
     },
@@ -200,4 +200,3 @@ export const policyEN = {
     }
   ]
 };
-

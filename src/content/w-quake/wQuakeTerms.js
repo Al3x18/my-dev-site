@@ -26,7 +26,7 @@ export const termsEN = {
       title: "3. Open Source License",
       content: [
         "W-Quake is released under the **MIT License**. The source code is publicly available at:",
-        "**https://github.com/Al3x18/flutter_w-quake**",
+        "https://github.com/Al3x18/flutter_w-quake",
         "You are free to:",
         "• View, modify, and distribute the source code",
         "• Use the App for personal purposes",
@@ -150,4 +150,3 @@ export const termsEN = {
     }
   ]
 };
-
