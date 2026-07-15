@@ -1,13 +1,6 @@
 import { termsEN, termsIT } from '../content/race-room/raceRoomTerms';
 import LegalPage from '@/components/LegalPage';
-
-// Helper function to parse bold text
-const parseText = (text) => {
-  const parts = text.split(/\*\*(.*?)\*\*/g);
-  return parts.map((part, index) => 
-    index % 2 === 1 ? <strong key={index}>{part}</strong> : part
-  );
-};
+import InlineMarkdown from '@/components/InlineMarkdown';
 
 function RaceRoomTerms({ lang = 'en' }) {
   const terms = lang === 'it' ? termsIT : termsEN;
@@ -20,7 +13,7 @@ function RaceRoomTerms({ lang = 'en' }) {
       sections={terms.sections.map((section) => ({
         title: section.title,
         content: section.content.map((paragraph, pIndex) => (
-          <p key={pIndex}>{parseText(paragraph)}</p>
+          <p key={pIndex}><InlineMarkdown>{paragraph}</InlineMarkdown></p>
         )),
       }))}
       footer={
@@ -41,4 +34,3 @@ export function RaceRoomTermsIT() {
 }
 
 export default RaceRoomTerms;
-

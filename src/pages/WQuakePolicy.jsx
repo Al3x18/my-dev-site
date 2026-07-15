@@ -1,13 +1,6 @@
 import { policyEN } from '../content/w-quake/wQuakePolicy';
 import LegalPage from '@/components/LegalPage';
-
-// Helper function to parse bold text
-const parseText = (text) => {
-  const parts = text.split(/\*\*(.*?)\*\*/g);
-  return parts.map((part, index) => 
-    index % 2 === 1 ? <strong key={index}>{part}</strong> : part
-  );
-};
+import InlineMarkdown from '@/components/InlineMarkdown';
 
 function WQuakePolicy() {
   const policy = policyEN;
@@ -21,7 +14,7 @@ function WQuakePolicy() {
       sections={policy.sections.map((section) => ({
         title: section.title,
         content: section.content.map((paragraph, pIndex) => (
-          <p key={pIndex}>{parseText(paragraph)}</p>
+          <p key={pIndex}><InlineMarkdown>{paragraph}</InlineMarkdown></p>
         )),
       }))}
       footer={
@@ -35,4 +28,3 @@ function WQuakePolicy() {
 }
 
 export default WQuakePolicy;
-

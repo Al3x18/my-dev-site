@@ -68,7 +68,7 @@ export const termsEN = {
         "• Data is processed based on legitimate interest (Article 6(1)(f) GDPR) and is retained for 14 months",
         "**Third-Party Services**",
         "Payment processing services (RevenueCat, Google Play Billing) and other third-party services may collect user data in accordance with their respective privacy policies. We recommend reviewing the privacy policies of these services.",
-        "For detailed information about data collection and processing, please review our [Privacy Policy](#)."
+        "For detailed information about data collection and processing, please review our [Privacy Policy](/race-room-policy)."
       ]
     },
     {
@@ -157,7 +157,7 @@ export const termsIT = {
         "• I dati sono elaborati sulla base del legittimo interesse (Articolo 6(1)(f) GDPR) e sono conservati per 14 mesi",
         "**Servizi di Terze Parti**",
         "Servizi di elaborazione pagamenti (RevenueCat, Google Play Billing) e altri servizi di terze parti possono raccogliere dati degli utenti in conformità con le rispettive politiche sulla privacy. Raccomandiamo di consultare le politiche sulla privacy di questi servizi.",
-        "Per informazioni dettagliate sulla raccolta e l'elaborazione dei dati, consultare la nostra [Privacy Policy](#)."
+        "Per informazioni dettagliate sulla raccolta e l'elaborazione dei dati, consultare la nostra [Privacy Policy](/race-room-policy)."
       ]
     },
     {
@@ -175,4 +175,3 @@ export const termsIT = {
     }
   ]
 };
-
