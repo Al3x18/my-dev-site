@@ -4,13 +4,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 
 function NotFound() {
   return (
-    <main className="container grid min-h-[70vh] place-items-center py-10">
+    <main className="container flex min-h-screen min-h-svh items-center justify-center px-5 py-10 text-center">
       <Card className="w-full max-w-xl bg-card/80">
-        <CardHeader>
+        <CardHeader className="items-center">
           <CardTitle>404 - Page Not Found</CardTitle>
-          <CardDescription>The route you requested does not exist or has been moved.</CardDescription>
+          <CardDescription>Looks like there&apos;s nothing to see here.</CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="flex justify-center">
           <Link to="/">
             <Button>Back to home</Button>
           </Link>
