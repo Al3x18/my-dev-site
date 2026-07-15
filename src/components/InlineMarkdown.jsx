@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 
 const tokenPattern = /\[([^\]]+)\]\(([^)]+)\)|\*\*(.*?)\*\*|(https?:\/\/[^\s),]+)|([\w.%+-]+@[\w.-]+\.[A-Za-z]{2,})/g;
-const linkClassName = 'font-medium text-primary underline underline-offset-2 transition-colors hover:text-primary/80';
+const linkClassName = 'text-primary transition-colors hover:text-primary/80';
 
 function InlineLink({ href, children }) {
+  const className = `${linkClassName}${href.startsWith('mailto:') ? ' font-bold' : ''}`;
+
   if (href.startsWith('/')) {
     return (
-      <Link className={linkClassName} to={href}>
+      <Link className={className} to={href}>
         {children}
       </Link>
     );
@@ -16,7 +18,7 @@ function InlineLink({ href, children }) {
 
   return (
     <a
-      className={linkClassName}
+      className={className}
       href={href}
       target={opensNewTab ? '_blank' : undefined}
       rel={opensNewTab ? 'noopener noreferrer' : undefined}
