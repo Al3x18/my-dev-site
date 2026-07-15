@@ -17,20 +17,6 @@ Live at [alexdepasquale.dev](https://alexdepasquale.dev).
 
 React, Vite, React Router, Tailwind CSS, and custom shadcn/ui-based components. The site is deployed on Vercel with Analytics and Speed Insights.
 
-## Development
-
-```bash
-npm install
-npm run dev
-```
-
-Available checks:
-
-```bash
-npm run lint
-npm run build
-```
-
 ## Project structure
 
 ```text
