@@ -62,6 +62,31 @@ const knowledgeData = [
     ]
   },
   {
+    id: 'computer-architecture',
+    name: 'Computer Architecture',
+    icon: '🖥️',
+    category: 'university',
+    topics: [
+      'Layered computer architecture models and the historical evolution of computing systems',
+      'Computer types, processor families, and the organization of modern computing systems',
+      'Parallel processing techniques and strategies for improving system performance',
+      'Memory hierarchy: primary memory, secondary storage, optical media, and memory organization',
+      'Input/output devices and communication between system components',
+      'Fixed-base number systems and binary, octal, and hexadecimal representations',
+      'Binary arithmetic and integer encodings: sign-magnitude, ones\' complement, two\'s complement, and excess notation',
+      'Fixed-point and floating-point representation of real numbers',
+      'Digital logic fundamentals, circuit equivalence, Boolean simplification, and function minimization',
+      'Combinational arithmetic circuits and sequential logic circuits',
+      'Latches, flip-flops, registers, volatile and non-volatile memory, and FPGA fundamentals',
+      'CPU chips and bus architecture: width, timing, arbitration, and bus operations',
+      'Microarchitecture design, microinstructions, and microprogrammed control units',
+      'IJVM instruction and memory management at the microarchitecture level',
+      'IJVM implementation with Mic-1 and execution-path optimization techniques',
+      'Prefetching with Mic-2 and additional processor performance improvements',
+      'Instruction Set Architecture principles and the relationship between ISA and microarchitecture'
+    ]
+  },
+  {
     id: 'networking',
     name: 'Computer Networks & Security',
     icon: '🌐',
@@ -210,4 +235,3 @@ const knowledgeData = [
 ]
 
 export default knowledgeData
-

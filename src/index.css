@@ -1,25 +1,36 @@
+@import '@fontsource/roboto/latin-300.css';
+@import '@fontsource/roboto/latin-400.css';
+@import '@fontsource/roboto/latin-400-italic.css';
+@import '@fontsource/roboto/latin-500.css';
+@import '@fontsource/roboto/latin-700.css';
+@import '@fontsource/roboto/latin-900.css';
+@import '@fontsource/roboto-mono/latin-400.css';
+@import '@fontsource/roboto-mono/latin-500.css';
+@import '@fontsource/roboto-mono/latin-600.css';
+@import '@fontsource/roboto-mono/latin-700.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 224 25% 8%;
-    --foreground: 210 40% 98%;
-    --card: 224 22% 10%;
-    --card-foreground: 210 40% 98%;
-    --primary: 262 85% 66%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 222 18% 18%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 222 18% 18%;
-    --muted-foreground: 215 20% 70%;
-    --accent: 190 95% 55%;
-    --accent-foreground: 222 47% 11%;
-    --border: 222 18% 24%;
-    --input: 222 18% 24%;
-    --ring: 262 85% 66%;
-    --radius: 0.9rem;
+    --background: 34 100% 98%;
+    --foreground: 0 0% 3%;
+    --card: 34 100% 98%;
+    --card-foreground: 0 0% 3%;
+    --primary: 229 100% 59%;
+    --primary-foreground: 34 100% 98%;
+    --secondary: 35 36% 91%;
+    --secondary-foreground: 0 0% 3%;
+    --muted: 35 36% 91%;
+    --muted-foreground: 0 0% 32%;
+    --accent: 11 100% 61%;
+    --accent-foreground: 34 100% 98%;
+    --border: 0 0% 10%;
+    --input: 0 0% 10%;
+    --ring: 229 100% 59%;
+    --radius: 0rem;
   }
 
   * {
@@ -32,11 +43,46 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-    background-image:
-      radial-gradient(circle at 15% 10%, hsl(262 85% 66% / 0.17), transparent 28%),
-      radial-gradient(circle at 85% 5%, hsl(190 95% 55% / 0.14), transparent 30%),
-      radial-gradient(circle at 50% 100%, hsl(336 80% 62% / 0.12), transparent 25%);
-    background-attachment: fixed;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    background-color: #FFFAF3;
+    background-image: linear-gradient(to right, rgb(49 87 255 / 0.055) 1px, transparent 1px);
+    background-size: min(8vw, 96px) 100%;
   }
+
+  ::selection { background: #3157FF; color: #FFFAF3; }
+
+  a, button { @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-4 focus-visible:ring-offset-background; }
+}
+
+@layer components {
+  .portfolio-shell { @apply mx-auto max-w-[1440px] px-5 pb-10 md:px-10 lg:grid lg:grid-cols-[180px_1fr] lg:gap-10 lg:px-14; }
+  .site-nav { @apply sticky top-0 z-40 col-span-full flex h-20 items-center justify-between border-b border-black bg-background/95 backdrop-blur-sm lg:grid lg:grid-cols-[180px_1fr] lg:gap-10; }
+  .site-mark { @apply font-mono text-xl font-black tracking-[-0.08em]; }
+  .site-mark span { @apply ml-0.5 text-primary; }
+  .nav-links { @apply min-w-0 flex-1 items-center justify-end gap-1 overflow-x-auto; display: flex; scrollbar-width: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-link { @apply shrink-0 border-b border-transparent px-3 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.16em] transition-colors hover:border-primary hover:text-primary md:text-xs; }
+  .portfolio-content { @apply col-start-2 min-w-0; }
+  .portfolio-section { @apply scroll-mt-24 py-16 md:py-24; }
+  .hero-section { @apply pt-10 md:pt-16; }
+  .section-rule { @apply bg-black; }
+  .portfolio-section h2 { font-family: Georgia, 'Times New Roman', serif; @apply text-4xl font-normal tracking-[-0.045em] md:text-6xl; }
+  .portfolio-section > section > div:first-child::before { content: ''; @apply mb-5 block h-2 w-12 bg-primary; }
+  .portfolio-section > section > div:first-child { @apply mb-10 md:mb-14; }
+  .portfolio-section > section > div:first-child > p { @apply mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base; }
+
+  .minimal-card { @apply border-black bg-background shadow-none transition-[background-color,transform,box-shadow] duration-200; }
+  .minimal-card:hover { background-color: #fffdf9; box-shadow: 5px 5px 0 #3157FF; transform: translate(-2px, -2px); }
+  .capability-row { @apply transition-colors; }
+  .capability-row-1:hover { background: #dfe6ff; }
+  .capability-row-2:hover { background: #ffe0d8; }
+  .capability-row-3:hover { background: #fff0a8; }
+  .selected-project { @apply transition-colors; }
+  .selected-project:hover { @apply bg-primary text-primary-foreground; }
+  .selected-project:hover p { color: inherit; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .portfolio-section { animation: reveal 0.55s ease both; }
+  @keyframes reveal { from { opacity: 0; } to { opacity: 1; } }
 }

@@ -66,13 +66,14 @@ function App() {
       {!loaded ? (
         <LoadingScreen progress={progress} currentTask={currentTask} />
       ) : (
-        <main className="container py-6 md:py-10">
-          <div className="mb-6 border-b border-border/60 pb-3 md:mb-8 md:pb-4">
-            <nav className="grid w-full grid-cols-3 gap-2 md:flex md:min-w-0 md:items-stretch md:gap-2">
+        <main className="portfolio-shell">
+          <div className="site-nav">
+            <a href="#home" className="site-mark" aria-label="Back to top">ADP<span>.</span></a>
+            <nav className="nav-links" aria-label="Primary navigation">
               {[
                 ['Home', '#home'],
-                ['Skills', '#skills'],
                 ['Projects', '#projects'],
+                ['Skills', '#skills'],
                 ['Now', '#working-on'],
                 ['Education', '#education'],
                 ['Contact', '#contact'],
@@ -80,7 +81,7 @@ function App() {
                 <a
                   key={href}
                   href={href}
-                  className="flex min-h-10 w-full items-center justify-center rounded-full border border-border/70 bg-secondary/35 px-2 py-2 text-center text-xs font-medium leading-snug text-muted-foreground transition hover:border-primary/40 hover:bg-primary/10 hover:text-foreground whitespace-normal md:min-h-0 md:flex-1 md:px-3.5 md:py-2 md:text-sm"
+                  className="nav-link"
                 >
                   {label}
                 </a>
@@ -88,28 +89,28 @@ function App() {
             </nav>
           </div>
 
-          <div className="space-y-10 md:space-y-12">
-            <section id="home" className="scroll-mt-28 md:scroll-mt-32">
+          <div className="portfolio-content">
+            <section id="home" className="portfolio-section hero-section">
               <Header />
             </section>
-            <Separator />
-            <section id="skills" className="scroll-mt-28 md:scroll-mt-32">
-              <Skills />
-            </section>
-            <Separator />
-            <section id="projects" className="scroll-mt-28 md:scroll-mt-32">
+            <Separator className="section-rule" />
+            <section id="projects" className="portfolio-section">
               <Projects />
             </section>
-            <Separator />
-            <section id="working-on" className="scroll-mt-28 md:scroll-mt-32">
+            <Separator className="section-rule" />
+            <section id="skills" className="portfolio-section">
+              <Skills />
+            </section>
+            <Separator className="section-rule" />
+            <section id="working-on" className="portfolio-section">
               <WorkingOn />
             </section>
-            <Separator />
-            <section id="education" className="scroll-mt-28 md:scroll-mt-32">
+            <Separator className="section-rule" />
+            <section id="education" className="portfolio-section">
               <Education />
             </section>
-            <Separator />
-            <section id="contact" className="scroll-mt-28 md:scroll-mt-32">
+            <Separator className="section-rule" />
+            <section id="contact" className="portfolio-section">
               <Contact />
             </section>
           </div>

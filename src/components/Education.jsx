@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import knowledgeData from '../content/knowledgeData'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -84,9 +85,9 @@ function Education() {
         ))}
       </div>
 
-      {activeKnowledge && (
+      {activeKnowledge && createPortal(
         <div
-          className="fixed inset-0 z-50 grid place-items-center bg-black/60 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] grid place-items-center bg-black/10 p-4 backdrop-blur-[3px]"
           onClick={closeOverlay}
         >
           <div
@@ -121,11 +122,11 @@ function Education() {
               </ul>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   )
 }
 
 export default Education
-

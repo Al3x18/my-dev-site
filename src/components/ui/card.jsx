@@ -3,14 +3,14 @@ import { cn } from "@/lib/utils"
 function Card({ className, ...props }) {
   return (
     <div
-      className={cn("rounded-xl border border-border bg-card text-card-foreground shadow-sm", className)}
+      className={cn("minimal-card border bg-card text-card-foreground", className)}
       {...props}
     />
   )
 }
 
 function CardHeader({ className, ...props }) {
-  return <div className={cn("flex flex-col space-y-1.5 p-6", className)} {...props} />
+  return <div className={cn("flex flex-col space-y-1.5 p-5 md:p-6", className)} {...props} />
 }
 
 function CardTitle({ className, ...props }) {
