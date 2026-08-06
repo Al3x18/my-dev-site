@@ -47,11 +47,6 @@ function Header() {
     <header>
       <div className="mb-16 grid gap-10 lg:grid-cols-[1fr_280px] lg:items-end">
         <div>
-          <div className="mb-8 flex items-center gap-3">
-            <span className="h-2 w-2 bg-accent" aria-hidden="true" />
-            <p className="font-mono text-xs font-bold uppercase tracking-[0.18em]">Available for opportunities</p>
-          </div>
-
           <h1 className="max-w-4xl font-serif text-[clamp(4rem,11vw,9.5rem)] font-normal leading-[0.78] tracking-[-0.075em]">
             Alex<br />De Pasquale
           </h1>

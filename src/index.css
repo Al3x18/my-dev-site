@@ -58,7 +58,7 @@
   .portfolio-shell { @apply mx-auto max-w-[1440px] px-5 pb-10 md:px-10 lg:grid lg:grid-cols-[180px_1fr] lg:gap-10 lg:px-14; }
   .site-nav { @apply sticky top-0 z-40 col-span-full flex h-20 items-center justify-between border-b border-black bg-background/95 backdrop-blur-sm lg:grid lg:grid-cols-[180px_1fr] lg:gap-10; }
   .site-mark { @apply font-mono text-xl font-black tracking-[-0.08em]; }
-  .site-mark span { @apply ml-0.5 text-primary; }
+  .site-mark span { @apply text-primary; }
   .nav-links { @apply min-w-0 flex-1 items-center justify-end gap-1 overflow-x-auto; display: flex; scrollbar-width: none; }
   .nav-links::-webkit-scrollbar { display: none; }
   .nav-link { @apply shrink-0 border-b border-transparent px-3 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.16em] transition-colors hover:border-primary hover:text-primary md:text-xs; }
