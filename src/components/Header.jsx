@@ -39,6 +39,24 @@ const stackGroups = [
   },
 ]
 
+function ExternalLinkIcon({ className = 'h-4 w-4' }) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="square"
+      strokeLinejoin="miter"
+    >
+      <path d="M7 17 17 7" />
+      <path d="M9 7h8v8" />
+    </svg>
+  )
+}
+
 function Header() {
   const birthDate = dayjs('18-01-1997', 'DD-MM-YYYY')
   const age = dayjs().diff(birthDate, 'year').toString()
@@ -62,8 +80,12 @@ function Header() {
             My strongest stack today is Flutter with Bloc and Riverpod, Swift, and Python for backend and API automation.
           </p>
           <div className="mt-6 flex flex-wrap gap-2">
-            <a href="https://github.com/Al3x18" target="_blank" rel="noopener noreferrer"><Button size="sm">GitHub ↗</Button></a>
-            <a href="https://www.linkedin.com/in/alex-de-pasquale-28535860/" target="_blank" rel="noopener noreferrer"><Button variant="outline" size="sm">LinkedIn ↗</Button></a>
+            <a href="https://github.com/Al3x18" target="_blank" rel="noopener noreferrer">
+              <Button size="sm">GitHub <ExternalLinkIcon className="h-3.5 w-3.5" /></Button>
+            </a>
+            <a href="https://www.linkedin.com/in/alex-de-pasquale-28535860/" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="sm">LinkedIn <ExternalLinkIcon className="h-3.5 w-3.5" /></Button>
+            </a>
           </div>
         </div>
       </div>
@@ -114,7 +136,7 @@ function Header() {
                   <p className="font-serif text-2xl transition-transform group-hover:translate-x-1">{project.name}</p>
                   <p className="mt-1 text-xs text-muted-foreground">{project.subtitle}</p>
                 </div>
-                <span className="text-xl transition-transform group-hover:-translate-y-1 group-hover:translate-x-1">↗</span>
+                <ExternalLinkIcon className="h-5 w-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
               </a>
             ))}
           </div>
